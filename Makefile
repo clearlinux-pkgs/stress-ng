@@ -1,5 +1,5 @@
 PKG_NAME := stress-ng
-URL := http://kernel.ubuntu.com/git/cking/stress-ng.git/snapshot/stress-ng-V0.05.03.tar.gz
+URL := https://github.com/ColinIanKing/stress-ng/archive/V0.05.11.tar.gz
 ARCHIVES :=
 
 include ../common/Makefile.common
