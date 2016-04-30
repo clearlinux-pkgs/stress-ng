@@ -4,7 +4,7 @@
 #
 Name     : stress-ng
 Version  : V0.05.12
-Release  : 5
+Release  : 6
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.05.12.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.05.12.tar.gz
 Summary  : No detailed summary available
