@@ -1,3 +1,1819 @@
+stress-ng (0.08.06-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Debian/control: update standards version to 4.0.0
+  * Make test-sem-sysv.c fail for GNU/HURD
+  * Make test-mq-sysv.c fail for GNU/HURD
+  * Make test-affinity fail for GNU/HURD
+  * stress-cyclic: fix build issues on non-Linux platforms
+  * Clean up some warnings found on test config code
+  * Add --cyclic-method to cyclic measurements stressor
+  * Add build-time checks for SYSV shared memory APIs
+  * stress-sigsegv: add NOCLOBBER hint to fix warning with gcc 5.4.1
+  * test-sem-posix: include time.h to build on BSD
+  * stress-sem-sysv: make semtimedop a linux only feature
+  * Add build-time checks for SYSV message queues
+  * Forgot to add in new test-mq-posix.c test source
+  * Add build-time checks for POSIX message queues
+  * Add in cyclic help options
+  * stress-vforkmany: add self adjusting waste memory allocation
+  * stress-vforkmany: make child processes larger to be more OOM'able
+  * stress-socket-fd: Add checks for sendmsg failures
+  * stress-socket-fd: send SIGALRM rathe rather than SIGKILL to child
+  * Add new --cyclic-dist distribution option
+  * stress-vforkmany: allow children to be OOM'd (LP: #1698747)
+  * sem-sysv: add linux checks for linux only semctl commands
+  * Add SYSV semaphore autodetection at build time
+  * job: voidify some function returns and constify len
+  * stress-cyclic: fix tab/spacing indentation
+
+ -- Colin King <colin.king@canonical.com>  Wed, 21 Jun 2017 17:33:49 +0100
+
+stress-ng (0.08.05-1) unstable; urgency=medium
+
+  * test-sem-posix: don't build for FreeBSD kernels
+  * stress-cyclic: only produce stats for first instance 
+  * stress-sem: hust build on systems that provide POSIX semaphores
+  * stress-madvise: fix build warning with clobbered sz with gcc 3.4.3
+  * stress-vm: fix build warning on munmap
+  * stress-fcntl: fix build issue on kFreeBSD
+  * stress-softlockup: fix build error on GNU/HURD
+  * stress-madvise: fix another BSD build warning
+  * stress-madvise: fix build warnings on BSD
+  * stress-cyclic: fix build issues on non-Linux systems
+  * Add build time checks for POSIX semaphores
+  * stress-cyclic: add NOCLOBBER hints to avoid gcc 4.9.2 longjmp warnings
+  * fix bogo ops setting, this was broken in the set/get settings changes
+  * stress-cyclic: avoid division by zero error
+  * Add new real time cyclic stressor
+  * Propagate stressor killed status back up to parent
+  * Make --class cpu? exit 0 rather than 1
+  * stress-fcntl: only build in fd_get when it is required
+  * stress-fcntl: only build in check_return if required
+  * test-affinity: voidify unused rc return
+  * stress-sigsegv: remove redundant null assignment to ptr
+  * stress-rlimit: reduce scope of fds, ptr and oldbrk
+  * stress-softlockup: constify fields in data structure
+  * stress-seccomp: check for specific macros after including the headers
+  * Add --abort option to force all stressor to abort if a stressor fails
+  * stress-softlockup: try to synchronize start of all children
+  * stress-futex: use shim'd futex calls
+  * Add abstraction shims to futex operations
+  * madvise: fix build failure because of incorrect build config check
+  * Add new softlockup stressor, use with caution
+  * Forgot to add test-affinity.
+  * Add madvise build time checks
+  * Add test-affinity to dist rule
+  * stress-clock: don't do zero nanosecond sleeps
+  * Add automatic affinity checking at build time
+  * stress-sigsegv: produce fault using write to read-only page
+  * stress-vforkmany: remove as many calls as possible
+
+ -- Colin King <colin.king@canonical.com>  Fri, 16 Jun 2017 11:42:56 +0100
+
+stress-ng (0.08.04-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * debian/control: use libgcrypt20-dev (Closes: #864137)
+  * stress-kcmp: add new KCMP_EPOLL_TFD to enums
+
+ -- Colin King <colin.king@canonical.com>  Mon, 5 Jun 2017 10:12:14 +0100
+
+stress-ng (0.08.03-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Manual: update date
+  * stress-pthread: don't use pthread_yield for NetBSD and Solaris
+  * stress-wait: fix waitpid, make sure it's waiting with correct flags
+  * stress-wait: fix WCONINUED typo and add better waitpid error detection
+  * stress-nice: where possible force a sched yield
+  * stress-memcpy: force calls to memcpy and memmove
+  * stress-longjmp: remove extraneous tab
+  * stress-matrix: Add a few more simple matrix method
+  * stress-longjmp: make it a little more stressy
+  * Add OPTIMIZE1 -O1 optimization hint
+  * Add NOINLINE macro for forcing no-inlining of small functions
+  * stress-exec: Make exec fail detection more intelligent
+  * Add comment hinting to fallthrough macro to help static analyzers
+  * stress-epoll: fix comment about delay time
+  * stress-cpu: make macro args distinguishable from function names
+  * stress-cpu: correct a comment function name
+  * stress-pthread: add pthread_yield() call for more scheduler stress
+  * cache: add in missing const to argument
+  * cache: minor code clean ups
+  * constify set/get setting function args
+  * stress-aio-linux: use DIRECT_IO and aligned buffers
+  * Remove the main_opt_t and set/get these using the set/get settings
+  * perf: constify n in perf_yaml_label
+  * stress-cpu: add factorial computation and approximations method
+  * manual: update contributors list, add Abdul Haleem
+  * stress-ng: help: fix typo and replace method m with method M
+  * stress-cpu-online: EBUSY shouldn't be a fatal error
+  * Fix: Macro defination for SECCOMP_SET_MODE_FILTER
+  * stress-socket-fd: fix fork failures correctly, make child oomable
+  * stress-memthrash: try harder to get mmap'd memory
+  * Update documentation and help for timeout, specify times in T
+  * stress-ng: remove white space in some -ops help information
+  * move help_t to main stress-ng.c as it's just local to that source
+  * move ionice help to the generic options
+
+ -- Colin King <colin.king@canonical.com>  Thu, 1 Jun 2017 17:32:58 +0100
+
+stress-ng (0.08.02-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-dev: don't build for __sun__, it does not have DT_* macros
+  * example-jobs/device.job: Add dev stressor
+  * Move the --dev stressor to the CLASS_DEV class
+  * example-jobs/memory.job: add memthrash example
+  * Expand the default run time text into human time units for large times
+  * stress-dev: remove linux only build constraint
+  * stress-dev: use pthread_args_t rather than a special context struct
+  * Makefile: update perf rule to match output of other CC rules
+  * stress-dev: ensure we check for all watchdog names
+  * Make zero timeouts run forever.
+  * Add dev stressor to exercise /dev entries
+  * stress-sockpair: make parent less oomable than the child
+  * stress-memthrash: optimization tweaks, makes it run a bit hotter
+  * stress-memthrash: add OOM detection handling
+  * stress-memthrash: Add MAP_POPULATE to mmap'd region
+
+ -- Colin King <colin.king@canonical.com>  Thu, 18 May 2017 13:26:50 +0100
+
+stress-ng (0.08.01-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-memthrash: implement stress_set_memthrash_method for
+    non-pthread builds
+  * stress-memthrash: provide some feedback about the method being used
+  * typedef a pproc_info_t ptr to proc_info_t type, we can use this on g99
+  * Revert "Use g11 as we are using C11 forward typedef declarations"
+  * Use g11 as we are using C11 forward typedef declarations
+  * stress-zlib: no need to initialize info
+  * stress-str: no need to initialize info
+  * stress-matrix: no need to initialize info
+  * stress-cpu: no need to initialize info
+  * stress-wcs: replace static option with set/get option settings
+  * stress-wcs: rename stress_wcs_stressor_info_t to
+    stress_wcs_method_info_t
+  * stress-vm: rename stress_vm_stressor_info_t to stress_vm_method_info_t
+  * stress-str: rename stress_str_stressor_info_t and use set/get method
+  * stress-matrix: rename stress_matrix_stressor_info_t to
+    stress_matrix_method_info_t
+  * stress-cpu: rename stress_cpu_stressor_info_t to
+    stress_cpu_method_info_t
+  * Add --memthrash-method methods
+  * stress-cpu: move HOT OPTIMIZE3 to correct function
+  * thermal-zone: fix tab indentation
+  * Add memthrash memory thrashing stressor
+  * TODO: remove acl from list, it is covered by stress-xattr.c
+  * stress-netdev: remove unused macro MAX_INTERFACES
+  * Add new netdev (network device) stressor
+  * stress-fork: remove unused static option variables
+  * Add #! handling in jobs, allow one to run stress-ng from a job script
+
+ -- Colin King <colin.king@canonical.com>  Fri, 12 May 2017 17:03:49 +0100
+
+stress-ng (0.08.00-1) unstable; urgency=medium
+
+  * Makefile: bump version to 0.08.00
+  * Makefile: add test-aligned-128.c to dist rule
+  * stress-vm: voidify return from get_setting call
+  * Add an example job that exercises all the matrix methods
+  * Quote the name of the stressor method to make it clearer
+  * Allow multiple instances of the same stressor to be run
+  * stress-vm: use new set/get_setting on vm-method option
+  * stress-matrix: use new set/get_setting on matrix-method option
+  * stress-cpu: add debug info on the cpu method being used
+  * stress-ng: clean up some of the overly wide lines
+  * Use struct field tags to specify field settings for new args_t
+  * Comment new settings types
+  * job: fix old gcc warnings, cast char to int before passing to isblank()
+  * remove stressor_id_find(), it is no longer used
+  * stress-iomix: voidify iomix_bytes for non-linux builds
+  * stress-hdd: ensure flags are zero
+  * Add check for no stress workers being run
+  * Be tidy and free up stashed settings
+  * stress-cpu: use set/get_settings on cpu-method option
+  * stress-shm: allocate addr and shm_names on heap rather than stack
+  * Ensure that when rounding to nearest page we don't round to zero
+  * Add new set/get_settings() mechanism to stash settings
+  * stress-vm-splice: ensure minimial mmap size is at least a page size
+  * Use the correct number of procs for sequential running
+  * Rework the proc info setup, clean up and refactor chunks of code
+  * Pass a list of proc_info_t's to stress_run, remove not_runnable flag
+  * Replace procs[] array with a doubly-linked list of proc_info_t
+  * Track per stressor stats with a pointer to the shared stats data
+  * stress-sync-file: clean up warning on signed integer comparison
+  * More minor job fixups
+  * scheduler.job: fix incorrect name of job
+  * Add a hot-cpu example job
+  * remove debug from --ignite-cpu option
+  * Add scheduler class example job
+  * manual: move mq options to correct location in man page
+  * Add filesystem class example job
+  * stress-hdd: ensure we do not divide by zero
+  * test-libbsd: voidify returns from test calls
+  * TODO: update things to do
+  * Move number of instances into args struct, remove stressor_instances()
+  * Add net class example job
+  * Re-order the class names into alphabetical order
+  * Add vm class example job
+  * manual: add missing full stop in userfaultfd section
+  * Add security class example job
+  * Makefile: update dist and install rules to incorporate example jobs
+  * Add pipe class example job
+  * Add interrupt class example job
+  * Add io class example job
+  * Add device class example job
+  * Add cpu-cache class example job
+  * Add cpu class example job
+  * Ensure stressor names are mungified from _ to - in class option
+  * memory.job: make default run time 60 seconds per stressor
+  * stress-mergesort: replace uint8_t sort with random mixer sort
+  * stress-stream: remove args-> prefix from instance message
+  * Add example memory job
+  * man page: fix the resources option with line wrapping
+  * man page: fix typo on sigpending-ops
+  * Add new --job option allowing one to script stressors
+  * split out arg parsing into a helper function, put opt data in a struct
+  * snapcraft: remove icon and update snapcraft yaml
+  * Add 128 byte cacheline alignment
+
+ -- Colin King <colin.king@canonical.com>  Sat, 6 May 2017 13:27:11 +0100
+
+stress-ng (0.07.30-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-fstat: fix build warning on struct shim_statx bufx on BSD*
+  * stress-fstat: don't use statx if AT_SYMLINK_NOFOLLOW or
+      AT_EMPTY_PATH are not defined
+  * stress-rlimit: restore brk point without using
+      sbrk(-MAX_RLIMIT_DATA)
+  * stress-rlimit: fill in empty {} fields
+  * Add statx system call to shim and fstat stressor
+  * stress-ptrace: formally voidify return from various system calls
+  * stress-lsearch: formally voidify return from lsearch() call
+  * stress-cpu: ensure variable b and b_flt are not re-assigned
+  * stress-*timer: explicitly use float rather than integer constant
+  * STRESS_*BIT macros: cast 1 to desired type before shifting
+  * stress-rlimit: formally voidify return from sbrk() call
+  * stress-get: formally voidify returns from get*() calls
+  * stress-chroot: fix missing else in fork return state checks
+  * stress-cpu: use helper to write data to sysfs
+
+ -- Colin King <colin.king@canonical.com>  Thu, 20 Apr 2017 00:06:02 +0100
+
+stress-ng (0.07.29-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * mwc: flush cached 8 and 16 bit values on reseeds (LP: #1681503)
+  * voidify returns from various function calls
+  * out-of-memory: #define constants and use these
+  * Use the stress_handle_stop_stressing for child case
+  * extern stress_handle_stop_stressing as it is a useful generic handler
+  * Use new stress_sig_stop_stressing helper
+  * Add stress_sig_stop_stressing helper to flag up end of stressing
+  * stress-cpu-online: minor formatting clean-up of source
+  * oomable option does not have any args, fix that
+  * Add new --oomable option to stop OOM'd stressors from being restarted
+  * stress-rlimit: add more rlimit limits, fix CPU limits
+
+ -- Colin King <colin.king@canonical.com>  Tue, 11 Apr 2017 10:54:26 +0100
+
+stress-ng (0.07.28-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * shim: voidify flags argument to shim_mlockall
+  * stress-mlock: forgot to use shim_mlockall rather than mlockall
+  * stress-mlock: use munlockall/mlockall shims, rename mlock_shim to do_mlock
+  * shim: add shims for mlockall and munlock all
+  * mwc: optimize 8 and 16 bit mwc functions (LP: #1677645)
+  * stress-ng.h: remove unused macro STRESS_IONICE
+  * Clean up some formatting of macros and long lines
+  * rename type stress_op to stress_op_t
+  * rename type stress_id  to stress_id_t
+  * stress-ng.h: rename type stress_func to stress_func_t
+  * stress-cpu: verify idct method more efficiently
+  * Add autoconfig test for 64 byte alignment too
+  * Fix test for 64K alignment (instead of 64 byte)
+  * Makefile: add missing .PHONY and correct spelling of .PHONEY
+  * Add autodetection for 64 byte alignment of functions (LP: #1676834)
+  * stress-rmap: use shim fallocated rather than posix_fallocate
+  * Makefile: no need to make configuration when making pdf
+
+ -- Colin King <colin.king@canonical.com>  Thu, 30 Mar 2017 17:26:17 +0100
+
+stress-ng (0.07.27-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: Add TODO list to make dist rule
+  * manual: update date
+  * stress-pty: don't conditionally build out stress_set_pty_max
+  * Update TODO list
+  * stress-memfd: use correct printf format specifier for uint64_t type
+  * stress-chdir, stress-dir: remove unused static flags
+  * stress-socket-fd: remove unused macro MAX_FDS
+  * stress-memfd: fix comment
+  * stress-chdir: correct the chdir-dirs option name
+  * stress-chdir: set default to correct DEFAULT_CHDIR_DIRS
+  * Add missing control for 4 stressors: (LP: #1676419)
+  * - Add --pty-max option to specify max number of ptys to try to open
+  * - Add --memfd-fds option to specify the number of memory file descriptors
+  * - Add --dir-dirs option to specify number of directories to stress on
+  * - Add --chdir-dirs option to specify number of directories
+  * log: add some more comments
+  * ignite-cpu: add some more minor comments
+  * helper: add some more comments
+  * stress-ng: add some more comments
+  * stress-ng: remove some blank lines
+  * mlock: remove const from m_addr_start to fix clang warning
+  * stress-fanotify: remove const from metadata declaration
+  * stress-cpu: remove unnecessary packed attribute on a union
+  * rename optarg args to opt as these shadow the global oparg variable
+  * fix up incorrect args to various stressors
+  * net: make stress_set_sockaddr_port net_addr const
+  * Minor layout re-formatting of long_options table
+  * stress-ng: Set per stressor default settings using stressor_set_defaults
+  * Manual: update copyright year
+  * Add TODO list
+  * stress-chroot: fix typo, ENODIR -> ENOTDIR
+  * stress-vecmath: remove -O3 optimisation as this breaks gcc on ppc64el
+  * Remove PEDANTIC=1 from makefile
+
+ -- Colin King <colin.king@canonical.com>  Mon, 27 Mar 2017 13:49:11 +0000
+
+stress-ng (0.07.26-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * fast-test-all: revert back to maximum of 4 stressors
+  * stress-zero: disable write to /dev/zero for minix
+  * shim: fix build error and warnings on Minix builds
+  * stress-fstat: allow threadless builds for systems without pthreads
+  * stress-ng: fix cppcheck style warnings: reduce scope of variables i and j
+  * stress-fstat: reduce scope of variable fd
+  * stress-zlib: clean up cppcheck style warnings
+  * stress-stackmmap: clean up cppcheck style warning
+  * stress-bind-mount: use args_t wrapper for clone to fix warning
+  * Wrap const *args_t to pass non const void * arg to pthread_create
+  * stress-tmpfs: constify array mmap_flags[]
+  * stress-shm-sysv: constify array shm_flags[]
+  * stress-opcode: constify static array sigs[]
+  * stress-mmap: constify mmap_flags
+  * stress-af-alg: constify static data structures
+  * test-asm-nop: add copyright boiler plate message
+  * Make default cache size information debug only
+  * thrash: add some function comments
+  * shim: add more comments
+  * Use the mincore shim to hide BSD/linux 3rd argument differences
+  * Add shim for mincore(2)
+  * shim: madvise: map madvise advice to posix_madvise advice
+  * stressors: use shim_madvise rather than madvise
+  * Add shim for madvise(2)
+  * stress-fp-error: check for EDOM, ERANGE (LP: #1674000)
+  * Make FORCE_DO_NOTHING build in a nop before other ways of doing nothing
+  * stress-matrix: align matrices to 64 bytes to reduce cache stalls
+  * stress-matrix: use restrict on arrays for more compute
+  * stress-icache: add missing support for PPC64
+  * Add ppc64 arch to defined STRESS arch types
+  * stress-icache: add missing support for IBM s390
+  * Add s390 arch to defined STRESS arch types
+  * stress-icache: don't build in 64K page support for ARMEL
+  * Makefile: replace 'got' with 'using' in autoconfiguration text
+  * stress-getrandom: check for EINTR failures (from SIGALRM)
+  * Makefile: generate apparmor raw binary data silently
+  * Explicitly call pr_closelog() and flush pending output (Closes: #857942)
+
+ -- Colin King <colin.king@canonical.com>  Mon, 20 Mar 2017 10:32:35 +0000
+
+stress-ng (0.07.25-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * helper: avoid calling sched_cpu on ppc64le
+  * Makefile: remove NOTPARALLEL, it's not helpful
+  * fast-test-all: remove xattr as it can break some file systems
+  * Makefile: don't autoconfig if we are making dist clean or install
+  * stress-mlock: add in const to void when calling mlock
+  * stress-icache: unconstify page_addr to clean up build warnings
+  * stress-vm: rename ret to waitret to fix variable shadowing
+  * stress-chroot: rename ret to waitret to fix variable shadowing
+  * stress-chroot: rename static path to temppath
+  * Makefile: display config steps and don't break if config is not available
+  * Add NOPARALLEL to config rules
+  * Makefile: Add .PHONY to rules
+  * manual: forgot to add the manual from the zlib changes
+  * stress-madvise: avoid overuse of MADV_HWPOISON (LP: #1672387)
+  * vecmath: use gcc __int128_t types if they are available
+  * Makefile: remove -g flag from default build
+  * README: update number of stressors and examples on how to build
+  * manual: update contributors list
+  * manual: fix escape around - for a stress-ng iomix example
+
+ -- Colin King <colin.king@canonical.com>  Thu, 16 Mar 2017 10:57:11 +0000
+
+stress-ng (0.07.24-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-fstat: remove siglongjmp, bad idea in threads
+  * stress-fstat: forgot to sigfillset on set
+  * helper: use correct format specifier to print size_t variable
+  * syscalls: add statx entry to table
+  * stress-fstat: run multiple threads on fstat for more stress
+  * stress-wait: fix spelling mistake in comment
+  * stress-socketpair: remove empty line
+  * stress-null: add mmap'ing and msync writes to /dev/null
+  * stress-memcpy: add in structure copying
+  * stress-flock: remove empty line
+  * stress-zero: privately mmap to /dev/zero rather than shared map
+  * stress-zero: add write to /dev/zero as this is also allowed
+  * stress-zlib: remove redundant assignment to ret
+  * stress-zlib: use PRIu64 format specifiers for uint64_t types
+  * stress-fcntl: fix build warning on minix
+  * helper: sigaltstack is available for GNU/HURD
+  * helper: fix random segfaults because of setting stack start incorrectly
+  * stress-zlib: clean up some tabbing/whitespace alignments in table
+  * stress-ng: don't use stress_set_zlib_method if zlib is not available
+  * helper: set sa_flags to SA_ONSTACK to fix stackmmap segfault
+  * stress-stackmmap: ensure signal handler stack is not on the stack
+  * stress-stackmmap: fix random segfaulting
+  * stress-atomic: fix build of this stressor
+  * Add a stress_sigaltstack alt stack helper and use helper
+  * Revert "helper: ensure ss_flags are set to SA_ONSTACK"
+  * helper: ensure ss_flags are set to SA_ONSTACK
+  * helper: GNU/HURD and Minix don't support sigaltstack, so ignore this
+  * stress_sighandler: ensure signal handlers use alternative signal stack
+  * stress-stackmmap: jump back to main loop via swapcontext
+  * Forgot to check in modifications to stress-ng.[ch] for the zlib changes
+  * stress-zlib: add check sum sanity checking and --zlib-method
+  * affinity: voidify returns from printf family of calls
+  * voidify returns from fflush
+  * voidify returns from printf family of calls
+  * voidify return from kill()
+  * voidify return from close, fclose and closedir
+
+ -- Colin King <colin.king@canonical.com>  Mon, 13 Mar 2017 11:42:12 +0000
+
+stress-ng (0.07.23-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-fcntl: minix does not require fd_get
+  * helper: use STRESS_SC_PAGES as defined in previous commit
+  * helper: try to use avg available phys pages and then total phys pages
+  * stress-ng.h: Re-organise ordering and formatting of macros
+  * Clean up the GCC attribute macros
+  * Add ALWAYS_INLINE gcc macro, force inlining of some critical functions
+  * Add a NORETURN gcc attribute macro and flag waste_resources accordingly
+  * stress-vm: initialize bit_error_count as MAP_FAILED
+  * stress-vm: check for bit errors and report them rather than ignoring them
+  * stress-bigheap: ensure heap growth size is rounded to pagesize
+  * Add new helper to check sizes in bytes and print in human readable format
+  * Allow memory stressors to run with ridiculously large allocations
+  * Allow one to specify sizes of files or memory in % of total available.
+  * Manual: clarify --cpu-load and --cpu-slice options
+  * Print out stressors in a class when using --class <name>?
+
+ -- Colin King <colin.king@canonical.com>  Mon, 6 Mar 2017 15:02:01 +0000
+
+stress-ng (0.07.22-1) unstable; urgency=medium
+
+  * Makefile: update version
+  * stress-vforkmany: move counter increment to pre-vfork stage
+  * stress-vforkmany: don't call setpgid in a vfork child
+  * stress-socket: unlink AF_UNIX path only if addr is not NULL
+  * stress-dccp: unlink AF_UNIX path only if addr is not NULL
+  * stress-iomix: remove redundant increments of posn
+  * stress-iomix: ENOSPC on fallocate is a EXIT_NO_RESOURCE error
+  * Update conversion tables, bytes and times
+  * Emit metrics even when counter is zero if test has been successfully run
+  * stress-futex: fix a broken comment
+  * stress-ng: fix rounding error in bogo ops-calculation
+  * stress-iomix: force page to be read even on high optimization levels
+  * stress-iomix: fix mmap flags, should be PROT_READ | PROT_WRITE
+  * stress-fcntl: reduce scope on variable fd
+
+ -- Colin King <colin.king@canonical.com>  Tue, 28 Feb 2017 17:59:58 +0000
+
+stress-ng (0.07.21-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: add test-asm-nop.c to dist rule
+  * Makefile: add config to dist rule
+  * stress-fault: fix build on BSD, missing g_ prefix on keep_stressing_flag
+  * Makefile: save and re-load configuration
+  * stress-apparmor: prefix global data with g_
+  * mwc: make __mwc static, it's not referred to globally nowadays
+  * Prefix all globals with g_ to indicate they are in global scope
+  * stress-chroot: make functions static
+  * stress-iomix: fix build warnings with gcc 3.4.3
+  * stress-ng.h: include strings.h for sun builds for rindex
+  * shim: fix build warning on FreeBSD
+  * stress-icache: forgot to add addr voidification
+  * shim: handle ENOSYS on posix_fallocate by using emulated fallocate
+  * stress-icache: fix warning when madvise does is not being used
+  * Add no-op nop cycle waster stressor
+  * stress-icache: cater for 4K, 16K and 64K page sizes and alignments
+
+ -- Colin King <colin.king@canonical.com>  Fri, 17 Feb 2017 14:58:11 +0000
+
+stress-ng (0.07.20-1) unstable; urgency=medium
+
+  * fast-test-all: print system information
+  * stress-key: handle ENOSYS on KEYCTL_SET_TIMEOUT and bail out early
+  * stress-iomix: remove redundant directory removal on fallocate failure
+  * shim: add emulation for failed fallocate(2)
+
+ -- Colin King <colin.king@canonical.com>  Thu, 9 Feb 2017 11:08:01 +0000
+
+stress-ng (0.07.19-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Manual: update date
+  * stress-iomix: don't use fdatasync on non-linux systems
+  * stress-chroot: make this unsupported for non-Linux systems
+  * stress-iomix: use shim_msync instread of msync for portability reasons
+  * stress-iomix: only use fadvise on linux
+  * stress-iomix: only use MAP_POPULATE on systems that provide this flag
+  * stress-iomix: only use FALLOC_FL_ZERO_RANGE on systems where it is available
+  * Correctly default iomix size to 1GB
+  * Move page_size to args struct, remove need for stress_get_pagesize calls
+  * Add a new iomix mixed I/O stressor
+  * stress-chroot: EINTR should not flag up as an error
+  * Add a chroot stressor
+  * Makefile: add pdf manual making rule
+  * stress-socketpair: abort on read failure
+  * stress-yield: remove args-> from instacne message text
+  * stress-msync: add another missing \n
+  * stress-sync-file: abort early on sync failures
+  * stress-msync: add missing \n on error message
+
+ -- Colin King <colin.king@canonical.com>  Wed, 8 Feb 2017 13:47:31 +0000
+
+stress-ng (0.07.18-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-resources: don't build in timer data if SIGUNUSED is not defined
+  * mwc: move inlined functions back into mwc.c
+  * stress-resources: don't build timer code of SIGUNUSED is not defined,
+    fixes builds on mips, mips64el, alpha, sparc64
+
+ -- Colin King <colin.king@canonical.com>  Wed, 1 Feb 2017 07:03:54 +0000
+
+stress-ng (0.07.17-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * fast-test-all: add more feedback on failed or skipped tests at
+    end of test
+  * stress-tlb-shootdown: ensure we have a sensible number of child
+    processes
+  * stress-fcntl: disabled F_DUPFD_* stressors for minix
+  * stress-fcntl: ensure we are not dup'ing onto an already open fd
+  * stress-fcntl: only use flock64 for linux
+  * stress-fcntl: fix F_OFD_GETLK error message
+  * stress-fcntl: use flock64 for locking fcntl calls
+  * stress-get: treat EOVERFLOW on prlimit as not a fatal error
+  * mincore: fix incorrect inverted logic to test for minix
+  * fix build warning with missing const on BSD builds
+  * fix build warnings with missing const on GNU/HURD builds
+  * Make opt_all and wait_flag static, they do not need to be global
+  * Fix up some spelling mistakes
+  * ignite-cpu: make settings static
+  * rename opt_do_wait to wait_flag as a more appropriate name
+  * rename opt_sigint to caught_sigint
+  * Replace opt_do_run with keep_stressing_flag
+  * mincore: ensure we touch pages even when calloc or mincore fail
+  * stress-ng: func_supported should be a void arg
+  * stress-resouces: add calloc resource suckage
+  * stress-resources: add posix semaphore resource suckage
+  * stress-resources: add timer resource suckage
+  * stress-resources: add socketpair to resource suckage
+  * Optimize mwc64/32/16/8 functions
+  * stress-noop: add loop and inc to show minimal stressor example
+  * Optimize __keep_running helper
+  * Add LIKELY/UNLIKELY macros
+  * time.c: add another constification
+  * helper, stress-ng.h: add a couple more constifications
+  * cache: more constifications, remove comment from #endif
+  * perf: use scientific notation to define double constants
+  * stress-sleep: constify cast
+  * constify args_t *args parameters
+  * cache.c, stress-ng.h: move generic_map to cache.c, make it a typedef
+  * stress-ng.h: add some more comments to various fields
+  * stress-fifo: fix wrap around detection
+  * stress-get: need to assign ret before checking it
+  * stress-fcntl: remove "name: " prefix in error message
+  * stress-icache: add missing ; to fix *BSD build
+  * stress-tmpfs: use args->pid instead of getpid on pid
+  * stress-hdd: fix build issue on GNU/HURD
+  * stress-atomic: fix missing ;
+  * use a new helper keep_stressing() to check if we should keep on running
+  * Fix up pr_msg va_args, requires a shim
+  * log: make args const
+  * make pr_* macros into shim functions, shrinks the build size
+  * pr_fail always writes to stderr, so remove the need to specify the
+    stream
+  * pr_err always writes to stderr, so remove the need to specify the
+    stream
+  * pr_tidy always writes to stderr, so remove the need to specify the
+    stream
+  * pr_dbg always writes to stderr, so remove the need to specify the
+    stream
+  * pr_inf always writes to stdout, so remove the need to specify the
+    stream
+  * Remove need to pass name in pr_fail_err, pr_fail_errno, pr_fail_dbg
+  * Add stress_temp_filename_args helper
+  * Add stress_temp_dir_args helper
+  * Add stress_temp_dir_rm_args helper to rmdir given stressor args
+  * Add stress_temp_dir_mk_args helper to mkdir given stressor args
+  * Use arg->pid and arg->ppid rather than getpid() and getppid
+  * stress-tsc: fix missing typo
+  * Add pid, ppid and re-order args to pack more efficiently in args_t
+  * Pass args to stressors via a args_t struct
+  * Use the new mmap_check/set helper funcs
+  * Add mmap set/check helpers
+  * thrash: perform some sanity checks on mmap ranges
+  * stress-tmpfs: remove unnecessary mypid variable
+  * Add a tmpfs file/mmap stressor
+  * stress-af-alg: fix fd leak, add close on error exit path
+  * stress-af-alg: check for null ptr on cmsg to keep clang scan happy
+  * stress-resources: reduce scopeof slavename, make it const char *
+  * stress-netlink-proc: reduce scope of newname
+  * stress-vm-rw: return EXIT_NO_RESOURCE on resource failure
+
+ -- Colin King <colin.king@canonical.com>  Tue, 31 Jan 2017 13:57:12 +0000
+
+stress-ng (0.07.16-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * fast-test-all: remove vforkmany, this can be aborted by the OS
+  * stress-numa: abort when no NUMA nodes found with EXIT_NO_RESOURCE
+  * stress-numa: make determining number of nodes non-fatal
+  * stress-numa: correctly deduce number of available NUMA memory
+    nodes (LP: #1656419)
+  * stress-*: make all pr_inf info messages write to stdout and not stderr
+  * stress-numa: add some info about number of NUMA nodes found
+  * stress-numa: add in better error failure abort and error return
+  * stress-numa: probe for maximum number of NUMA nodes
+  * stress-wcstr: fix build error for stress_wcscpy
+  * stress-wcs: fix wcslcpy and wcslcat test cases
+  * stress-wcs: improve failure detection, bail out early if tests fail
+  * stress-str: fix strlcpy and strlcat test cases
+  * stress-str: improve failure detection, bail out early if tests fail
+  * stress-seccomp: add openat to system calls to fix failure on aarch64
+  * stress-seccomp: use pr_fail for seccomp errors
+
+ -- Colin King <colin.king@canonical.com>  Fri, 20 Jan 2017 19:44:11 +0000
+
+stress-ng (0.07.15-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * fast-test-all: use --stressors to get the list of stressors
+  * stress-ng: fix typo in tlb-shootdown-ops option
+  * stress-ng: correct the alphabetical order of stressor names
+  * fast-test-all: sync before running next test
+  * mounts: cater for *BSD mount info fetching
+  * stress-netlink-proc.c: fix build issue on non-Linux systems
+  * Fix build issue introduced in commit 39025068b1fe1c2a72220
+  * stress-ng.h: remove double line spacing, add some comments
+  * Manual: update contributors list
+  * stress-rename: fix incorrect end of test logic
+  * stress-ng: minor cleanup of spacing, some inlining and comments
+  * Remove white space and replace ^ . with \t
+  * Forgot to add in stress-netlink-proc.c
+  * Add netlink-proc stressor
+  * stress-rlimit: force checking of run time in case we miss SIGALRM
+
+ -- Colin King <colin.king@canonical.com>  Tue, 17 Jan 2017 13:43:22 +0000
+
+stress-ng (0.07.14-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Manual: update date
+  * stress-socketpair: make stress_sockpair_oomable static
+  * stress-socketpair: detect an oom-killed stressor
+  * helper: don't use prctl PR_SET_DUMPABLE, it disables oom adjustment
+    and hence we can easily overcommit when running as root (LP: #1654971)
+  * out-of-memory: use /proc/self/... rather than /proc/$mypid/...
+  * helper: use /proc/self/... rather than /proc/$mypid/...
+  * stress-hsearch: don't free keys, some don't free them in hdelete
+  * stress-vforkmany: use sighandler alternative stack
+  * stress-context: make stack_sig static
+  * Makefile: remove -g flag
+  * stress-itimer: initialise start time
+  * Add new --vforkmany stressor
+  * stress-fanotify: ensure stress_fanotify_supported is built
+  * Add fanotify stressor
+  * Expand --get option in manual
+  * stress-get: don't verify on adjtimex if not root, add sysfs calls
+  * Add sysfs(2) shim wrapper
+  * stress-membarrier: also exercise CMD QUERY
+  * stress-dccp: report correct errno from connect failure
+  * Makefile: update copyright year
+  * update copyright year
+
+ -- Colin King <colin.king@canonical.com>  Tue, 10 Jan 2017 15:32:10 +0000
+
+stress-ng (0.07.13-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: rename check rule to fast-check-all
+  * manual: update date
+  * stress-udp: fix build warning on minix
+  * stress-mmap: fix build issue with ms_flags on GNU/HURD and minix
+  * add a make check rule to run debian/tests/fast-test-all
+  * stress-pthread: add error checking on cond, mutex and spinlock init
+  * add shim abstraction to msync, use this on various stressors
+  * stress-pthread: check for init failures and use a spinlock on counter
+  * add new dirdeep max depth directory stressor
+  * README: Update info on libraries required for a full build
+  * stress-cpu: fix missing bogo ops counter increment
+  * enforce 64 byte alignment to buffer
+  * stress-futex: fix typo in comment
+  * ensure stacks are aligned to 64 byte boundaries
+  * stress-hdd: use new align_address helper
+  * helper: add align_address helper to align a address to power of 2 boundary
+  * stress-sysinfo: only dump out info on number of mount points on instance 0
+  * trivial typo in man page
+
+ -- Colin King <colin.king@canonical.com>  Tue, 27 Dec 2016 19:40:19 +0000
+
+stress-ng (0.07.12-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-udp: minix fails on setsockopt SO_REUSEADDR, so ignore it
+  * stress-get: don't use NULL delta, just pass a zero delta timeval struct
+  * stress-fifo: catch EINTR as non-fatal error on open
+  * stress-resources: fix warning message on unused parameter 'pipe_size'
+  * debian/tests: remove dccp from fast-test-all
+  * helper: fix build issues on non-linux targets
+  * update date in the manual
+  * stress-resources: add pty resource suckage
+  * stress-resources: add inotify resource suckage
+  * stress-resources: try to expande pipe to maximum allowed size
+  * stress-oom-pipe: use stress_probe_max_pipe_size helper
+  * helper: add stress_probe_max_pipe_size to fine max pipe size
+  * Add Datagram Congestion Control Protocol dccp stressor
+  * stress-resources: add single pthread as another resource hogger
+  * ensure -v output is no wider than 80 chars to avoid line wrap on std tty
+  * stress-schedpolicy: set policy with param, remove unused new_param
+
+ -- Colin King <colin.king@canonical.com>  Mon, 19 Dec 2016 14:33:23 +0000
+
+stress-ng (0.07.11-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * thrash: bump the priority to 10
+  * thrash: use RR scheduler if possible on linux
+  * stress-sctp: don't unlink on an address that is NULL
+  * stress-schedpolicy: the set/get param was a bit unsound, fix it
+  * stress-fault: silence a clang warning
+  * stress-membarrier: pass thread arg as a ctxt_t * type
+  * helper: make __stress_get_stack_direction static
+  * stress-fstat: rename jump buffer to jmpbuf to avoid name shadowing
+  * mlock: fix warning with older pre gcc 4.4 on solaris
+  * helper: fix some more print pid_t warnings
+  * fix warnings on printing pid_t type
+  * stress-cpu: only use gcc optimise attribute on gcc 4.4 or higher
+  * small cleanups to stress-ng.h
+  * stress-personality: return EXIT_NOT_IMPLEMENTED if no personalities exist
+  * replace #ifdef with #if defined() as the default idiom
+  * makefile: use grep -e instead of grep -f
+  * add support macro for gcc-7 switch statement case fallthrough
+
+ -- Colin King <colin.king@canonical.com>  Wed, 14 Dec 2016 18:15:14 +0000
+
+stress-ng (0.07.10-1) unstable; urgency=medium
+
+  * add copyright boiler plate on fast-test-all
+  * stress-personality: move memset to avoid  memset 0 sized array
+  * forgot to add shim_getlogin to stress-ng.h
+  * shim: add more secure version of getlogin
+  * stress-mmapfork: fix typo on buffer sizeof
+  * stress-link: ensure buffer returned from readlink is terminated with zero
+  * shim_usleep: use nanosleep if it is available, fallback to older usleep
+  * stressors: use shim_usleep instead of deprecated usleep
+  * shim: abort early from shim_usleep if opt_do_run is false
+  * add usleep shim
+  * stress-opcode: rename signal handler dummy arg to signum
+  * stress-membarrier: memset pthread_ret with correct size
+  * stress-shm: use shim_fallocate rather than posix_fallocate
+  * stress-hdd: workaround lack of posix_memalign on sun
+  * stress-rmap: sun builds may not have posix_fallocate, so don't build it
+  * stress-wait: work around long int pid_t warnings on Sun systems
+  * stress-wcstr: sun wide char support has some wcs funcs missing
+  * stress-flock: disable this stressor for sun machines
+  * makefile: use -f instead of -e for Solaris versions of test
+
+ -- Colin King <colin.king@canonical.com>  Tue, 13 Dec 2016 19:43:11 +0000
+
+stress-ng (0.07.09-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * helper: fix cppcheck warning by initialising val1
+  * stress-fstat: don't open /dev files to stat them when running as root
+  * stress-fstat: don't bump counter if fstat fails
+  * stress-fstat: perform end of test check earlier than later
+  * stress-sync_file: use sync_file_range2() where required
+  * allow for static building, using STATIC=1 make
+
+ -- Colin King <colin.king@canonical.com>  Tue, 6 Dec 2016 21:41:22 +0000
+
+stress-ng (0.07.08-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * add NOCLOBBER macro and make some variables noclobberable
+  * stress-aio-linux: clean up clang warnings
+  * remove need to pass an argument to stress_get_stack_direction
+  * add smatchify script to make dist rule
+  * add smatchify static analysis script
+  * stress-userfaultfd: remove unnecessary exit_status call
+  * stress-socket: fix inconsistent indenting
+  * fast-test-all: remove tailing tabs
+  * snapcraft Makefile: remove trailing whitespace
+  * stress-daemon: clean up fd closing and add SIGALRM handler
+  * make daemon stressor a little more responsive to SIGALRMs
+  * make snapcraft confinement strict
+  * getrandom: add support for systems that support getentropy(2)
+  * shim: add comment about shim functions
+  * helper: remove caches = NULL for non-linux systems to fix build error
+  * shim: fall back to allocation via writes on fallocate
+  * stress-yield: remove need to use alloca, use calloc instead
+  * manual: add Luis to contributors list and sort names alphabetically
+  * shim: fix userfaultfd failures due to a typo
+  * increase STRESS_PROCS_MAX to 4096 for higher load on large iron
+  * stress-userfaultfd: work around static analysis false positive on fd
+  * stress-stream: avoid re-assignment of cpu_caches on linux case
+  * trash: remove traced, it is serving no purpose
+  * helper: don't re-assign cpu_caches on __linux__ build
+  * net: iterate to the size of domains rather than using sentinel
+  * affinity: remove #includes as these are included in stress-ng.h
+  * stress-oom: add in missing space between ooms and =
+
+ -- Colin King <colin.king@canonical.com>  Thu, 1 Dec 2016 11:45:11 +0000
+
+stress-ng (0.07.07-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * fast-test-all: don't run spawn test for testing
+  * fast-test-all: remove check for existence of stress-ng
+
+ -- Colin King <colin.king@canonical.com>  Fri, 25 Nov 2016 19:55:33 +0000
+
+stress-ng (0.07.06-1) unstable; urgency=medium
+
+  * update build rules for Solaris
+  * add MINIX notes to README
+  * shim: add check for posix_fallocate (fixes minix build error)
+  * abstract loff_t as it is not available on *BSD systems
+  * fix *BSD systems that don't support ino64_t and off64_t types
+  * stress-fallocate: use shim_fallocate wrapper
+  * shim: fix non-Linux build failure on shim_mlock2
+  * stress-fallocate: remove __linux__ only constraints on modes
+  * cache: make DCACHE and ICACHE #defines kernel gemeric
+  * remove white space and tabs at end of lines
+  * shim: add mlock2 system call to shim
+  * shim: add sched_getattr and sched_setattr shims
+  * shim: prefix linux_dirent* structs with shim_
+  * stress-seal: use shim for memfd_create
+  * stress-ng: minor re-ordering of structs and shim functions
+  * shim: rename sys_ioprio_* to shim_ioprio_*
+  * shim: add unshare system call to shim
+  * shim: add seccomp system call to shim
+  * shim: add userfaultfd system call to shim
+  * shim: add some more __linux__ checks
+  * stress-opcode: use shim_clear_cache
+  * shim: add NUMA specific system calls to shim
+  * shim: add memfd_create system call to shim
+  * shim: add membarrier system call to shim
+  * shim: add syslog system call to shim
+  * shim: add kcmp system call to shim
+  * shim: add __clear_cache GNUC cache clearing helper to shim
+  * shim: add getramdom system call to shim
+  * shim: add getdents and getdents64 system calls to shim
+  * shim: add getcpu system call to shim
+  * stress-get: use shim_gettid
+  * shim: add gettid system call to shim
+  * shim: add fallocate system call to shim
+  * shim: add copy_file_range system call to shim
+  * shim: add cacheflush system call to shim
+  * add shim abstraction layer for sched_yield()
+  * fast-test-all: add some feedback on when a test is being run
+  * use pr_fail_err on some more error messages
+  * fast-test-all: allow for STRESS_NG to specify stress-ng
+  * stress-epoll: fix build for GNU/HURD
+  * move all common #includes into stress-ng.h
+  * stress-ng.h: Add alloc.h include for sun arch
+  * stress-ng.h: include some more common headers and define _GNU_SOURCE
+  * stress-schedpolicy: fix broken counter, it was never being incremented
+  * stress-resources: fix broken counter, it was never being incremented
+  * stress-personality: fix broken counter, it was never being incremented
+  * stress-fp-error: fix broken counter, it was never being incremented
+  * fix broken counter, it was never being incremented
+  * stress-bind-mount: fix broken counter, it was never being incremented
+  * stress-handle: fix memory leak on line and also bump counter
+  * stress-apparmor: free apparmor_path to fix minor memory leak
+  * ensure cache region is free before termination
+  * stress-fstat: use sigsetjmp instead of sigjmp
+  * wrap some overly wide lines
+  * use pr_fail_err() instead of pr_fail where appropriate
+  * reduce scope of iterator variable i
+  * remove alloca in stressor_name_find
+  * remove space prefixed on klog-ops option
+  * mincore: touch pages even when mincore fails
+  * update syscalls.txt
+  * stress-schedpolicy: add sched_setattr/sched_getattr calls for Linux
+  * stress-schedpolicy: add more sched syscalls, clean up code
+  * add schedpolicy stressor
+  * stress-ng.h: change macro param name in STRESS macro
+
+ -- Colin King <colin.king@canonical.com>  Fri, 25 Nov 2016 10:43:11 +0000
+
+stress-ng (0.07.05-1) unstable; urgency=medium
+
+  * Makefile: bump version and update codename
+  * stress-fstat: fix resource leak on dp on error exit path
+  * stress-fstat: forcibly abort any system call on SIGALRM
+  * stress-aio-linux: use return as errno rather than errno
+  * stress-aio-linux: use return as errno rather than errno
+  * Need to #include <sched.h> when using clone(2)
+
+ -- Colin King <colin.king@canonical.com>  Thu, 17 Nov 2016 22:55:21 +0000
+
+stress-ng (0.07.04-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Add SIGUSR2 load average and memory stats information
+  * Makefile: don't remove apparmor-data.o
+  * Rename stress_sethandler to stress_set_handler
+  * Manual: add notes on how to properly terminate stress-ng
+  * Add SIGHUP to comment about terminating stress-ng
+  * Makefile: clean up objects and apparmor-data.o
+  * affinity: add some comments to functions
+  * stress-cpu: add some optimisation hints
+  * stress-cpu: add some more precision to constants
+  * stress-fallocate: verify file size if posix_fallocate succeeded
+  * stress-aio-linux: check for io_setup resource failures (LP: #1640547)
+
+ -- Colin King <colin.king@canonical.com>  Fri, 11 Nov 2016 12:42:12 +0000
+
+stress-ng (0.07.03-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-ioprio: use current pgrp and not global pgrp (LP: #1640631)
+
+ -- Colin King <colin.king@canonical.com>  Thu, 10 Nov 2016 00:00:01 +0000
+
+stress-ng (0.07.02-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Manual: Add exit status 4 EXIT_NOT_IMPLEMENTED to documentation
+  * Treewide: remove messy #if defined() build checks
+  * Allocate io_reqs on heap rather than alloca
+  * Makefile: re-format PEDANTIC CFLAGS
+  * stress-fiemap: fix up --fiemap-bytes option
+  * stress-sock-fd: add --sockfd-port option
+  * Add PEDANTIC build flags for extra checking
+  * stress-icache: fix volatile cast warning
+  * stress-vm: fix volatile cast warning
+  * stress-socket: fix shadowing on addr
+  * stress-mincore: addr does not need to be volatile
+  * stress-ng, thermal_zone, remove shared param, it is global
+  * parse-opts: fix char * cast warnings
+  * perf: remove (char *) cast
+  * helper: fix warnings
+  * use gnu printf style attributes to pr_yaml
+  * helper: cast pointer to const to fix warning
+  * stress-poll: fix shadowing on ret, rename one to rc
+  * Fix various bad castings for munge_underscore
+  * stress-oom-pipe: fix shadowing on fd, rename to pfd to avoid confusion
+  * stress-mq: remove shadowing variable attr
+  * stress-hdd: remove duplicate declarations of ret; make it a ssize_t
+  * stress-ng: make helper functions static
+  * thrash: rename pid to thrash_pid
+  * stress-zombie: make helper functions static
+  * stress-zlib: make helper functions static
+  * stress-xattr: remove redundant shadowing variable ret
+  * stress-mremap: fix shadowing on rc, remove rc
+  * stress-link: fix shadowing on ret
+  * stress-rw-vm: fix shadowing of ret
+  * stress-vm-rw: make helper functions static
+  * stress-unshare: make helper function static
+  * stress-tsearch: constify pointers
+  * stress-socket-fd: make helper function static
+  * stress-seek: fix shadowing on ret
+  * stress-readahead: make helper function static, fix shadowing on ret
+  * stress-qsort: constify pointers
+  * stress-mlock: constify addr pointer cast
+  * stress-mergesort: constify pointers
+  * stress-memfd: fix shadowing of variable name
+  * stress-fork: make helper function static
+  * stress-lsearch: constify pointer casts
+  * stress-itimer: make helper function static
+  * stress-iopri: remove local pgrp that shadows global
+  * stress-inotify: make helper func static, fix some const casts
+  * stress-heapsort: fix constify warnings
+  * stress-handle: make helper functions static
+  * stress-fp-error: fix float comparison
+  * stress-fifo: make helper function static, fix ret shadowing
+  * stress-filename: make helper functions static
+  * stress-fiemap: make helper functions static
+  * stress-dnotify: make dnotify_attrib_file static, fix newpath const
+  * stress-dentry: fix shadowing of variable j
+  * stress-bsearch: correctly constify casts on i1, i2
+  * stress-bind-mount: make stress_bind_mount_child static
+  * stress-cpu-online: make stress_cpu_online_set static
+  * stress-clone: make stress_clone* helper functions static
+  * stress-bsearch: constify i1 and i2
+  * stress-aio-linux: remove duplicate and shadowing variable ret
+  * stress-af-alg: make helper functions static
+  * Remove redundant re-declaration of mwc_seed
+  * stress-cap: sscanf on pid_t should be %d
+  * Make munge_underscore arg const char *
+  * Mungify _ to - in stressor names in --stressors option
+
+ -- Colin King <colin.king@canonical.com>  Tue, 8 Nov 2016 15:58:11 +0000
+
+stress-ng (0.07.01-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * manual: update date
+  * stress-ng: fix build issues for Solaris
+  * stress-rmap: fix warnings with gcc 3.4.3
+  * stress-rmap: Don't build for OpenBSD, it does not support posix_fallocate
+  * stress-rmap: don't build for Minix
+  * stress-rmap: rename macro CHILD_MAX to RMAP_CHILD_MAX
+  * Add dnotify stressor
+  * stress-*: voidify calls to setpgid
+  * thrash: remove ptrace waits, not really required
+  * thrash: use more standand %jx to scan in memory sizes
+  * thrash: remove debug messages
+  * manual: fix missing escape on - in --metrics-brief
+  * Add --stressors option to show available stressors
+  * cache: ensure path is set correctly for CPUs > 0
+  * cache: fix FIXMEs on determining the CPU number a process is running on
+  * Add stress_get_cpu() helper to fetch CPU number process is running on
+  * manual: fix typo --stack-full should be --stack-fill
+  * stress-rmap: remove redundant NO_MEM_RETRIES_MAX
+  * stress-apparmor: another fix to signal handler comment
+  * stress-rmap: uncomment setpgid call
+  * stress-rmap: replace white spaces with tab
+  * Add rmap stressor
+  * stress-apparmor: fix comment
+  * stress-icmp-flood: just count number of sendto failures
+  * Add --thrash option.  Don't use it unless you are crazy.
+  * debian tests: expand the SKIPPED notes on the test script
+  * debian test: use STRESS_NG var for stress-ng
+  * debian test: Use sh and make use POSIX string compare
+  * Add proc helper to help with init/destroy stressor helpers
+  * call stress_unmap_shared if share cache region allocation fails
+  * Add stress_map_shared helper to mmap stress-ng shared region
+  * generalise max proc limiting
+  * Factor out random stressor setting into helper function
+  * Factor out pathological stressor disabling into helper function
+  * stress-resources: declare pid if O_TMPFILE is also defined
+
+ -- Colin King <colin.king@canonical.com>  Fri, 28 Oct 2016 11:49:41 +0100
+
+stress-ng (0.07.00-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Make ICMP flood stressor conditional build on OS basis
+  * debian/rules: add hardening flags
+  * helper: fix white space indentation (spaces replaced by tab)
+  * stress-ng: bracket pid number on abort early message
+  * stress-userfaultfd: catch OOMs and report these as no resource issues
+  * stress-timer: make stress_timer_set static
+  * stress-sysfs: add zero byte writes to sysfs files
+  * stress-procfs: add zero byte writes to procfs files
+  * stress-icache: ensure we mprotect on page aligned boundary
+  * stress-opcode: unmap the shared region so we don't clobber it
+  * stress-ng: generalise the run-time unsupported stressor checks
+  * Add ICMP flood stressor
+  * stress-shm*: minor change to comment
+  * stress-rtc: fix ioctl() issues, use rtc_wkalrm for wake alarm ioctls
+  * stress-rtc: add padding around rtc_tm to workaround an ioctl bug
+  * stress-oom-pipe: fix pipe fd offset bug, causing writes to fd 0 on ppc64el
+  * stress-ng: fix spelling of resrouces -> resources
+  * stress-rtc: handle return code correctly and -EINTR aborts
+
+ -- Colin King <colin.king@canonical.com>  Mon, 17 Oct 2016 09:44:02 +0100
+
+stress-ng (0.06.18-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-resources: include alloca.h for __sun__ arch
+  * stress-ng: add missing break from switch on OPT_NO_RAND_SEED case
+  * stress-procfs/sysfs: abort rather than re-doing reads on read errors
+  * Add --no-rand-seed option to force reproduceable test start conditions
+  * stress-wcstr: use safe strlcat and strlcpy BSD* systems
+  * stress-str: use safe strlcat and strlcpy on *BSD systems
+  * stress-str: use safe strlcat and strlcpy if we have BSD string library
+  * Makefile: explicitly add -lc flags, stops a warning on FreeBSD builds
+  * stress-resources: pid variable declared only on specific builds
+  * stress-resources: don't build in syscall shims if we don't use them
+  * stress-mmapfork: set max strncat size appropriately
+  * Remove old deprecated --vm-stride from man page
+  * stress-resources: chew up less memory
+  * Remove resources stressor from fast test all
+  * stress-resources: add setpgid call
+  * stress-resources: try harder to terminate on SIGALRM
+  * Add resource stressor
+
+ -- Colin King <colin.king@canonical.com>  Mon, 3 Oct 2016 13:29:23 +0100
+
+stress-ng (0.06.17-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Update manual to explain the caveats with --perf
+  * perf: detect when perf counters can't be used (LP: #1626009)
+    - add better explanation on how to enable --perf as
+      an unprivileged user
+
+ -- Colin King <colin.king@canonical.com>  Wed, 21 Sep 2016 10:25:17 +0100
+
+stress-ng (0.06.16-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: add test-libsctp.c to make dist rule
+  * test-libcrypt: fix cppcheck warning
+  * Debian/control: add libgcrypt11-dev
+  * stress-procfs: clear stack before use
+  * manual: update date
+  * stress-sysfs: only report an info message on instance 0
+  * test-libsctp: add some checks for required macros
+  * sched: fix build warning when building with clang on minix
+  * sched: fix build warning when building with clang on minix
+  * stress-stack: fix build warning when building with clang on minix
+  * stress-mmap: fix build warning when building with clang on minix
+  * stress-get: fix build warning with clang on minix
+  * stress-sctp: add in missing --sctp-domain option, update manual
+  * Update net helper to add addresses, add new SCTP stressor
+  * Some minor cleanups to main stress-ng header, nothing major
+  * rename get_unsigned_long to get_uint32
+  * Some more 80 column source line width fixes
+  * stress-sysfs: use fstat rather than access on path
+  * stress-procfs: forgot to re-open closed file
+  * stress-procfs: add some illegal read calls to try to break procfs
+  * stress-sysfs: add some illegal read calls to try to break sysfs
+  * Make snapcraft confinement devmode
+  * Minor formatting changes to ensure 80 column wide source
+  * stress-tlb-shootdown: fix indentation
+  * stress-context: don't build with sigaltstack if minix or hurd
+  * stress-context: add use of sigaltstack and SS_AUTODISARM
+  * helper: fix indentation
+  * stress-opcode: fix indentation
+  * stress-ioprio: remove duplicate and badly indented umask() call
+  * stress-epoll: fix indentation on if statement
+  * helper: set core size to zero if possible with setrlimit
+  * helper: force number of cpus to be 1 if sysconf not available
+  * net: declare missing in6addr_any for minix
+  * stress-mmap: make mprotect a no-op for minix
+  * stress-mmap: don't use msync for minix
+  * stress-shm-sysv: don't use msync for minix
+  * stress-stack: don't use sigaltstack for minix
+  * sched: make this a no-op for minix
+  * mlock: make this a no-op for minix
+  * don't enable STRESS_MSYNC for minix
+  * don't enable STRESS_YIELD for minix
+  * stress-flock: don't yield if minix
+  * mincore: make this a no-op for minix
+  * madvise: this is a no-op for minix
+  * stress-mlock: don't build for minix
+  * stress-cpu: minix does not support cabsl, use cabs instead
+  * stress-hdd: don't do madvise for minix
+  * stress-get: minix does not have getpgrp()
+  * stress-ng.h: don't build in mlock stressor if minix
+  * forgot to guard MLOCK stressor with STRESS_MLOCK check
+  * stress-get: minix does not have getpgid()
+  * mounts: fix build issues for minix
+  * mincore: fix build warning on minix
+  * stress-ng.h: only include <pthread.h> if it is available
+  * stress-wait: cater for systems that lack WCONTINUED
+  * stress-sigsuspend: remove <pthread.h> header inclusion, not required
+  * stress-quota: make err local to each code block
+  * stress-quota: remove redundant err assignment
+  * stress-quota: rename local errno so we don't alias global errno
+  * stress-quota: fix cppcheck style warning
+  * stress-madvise: fix cppcheck style warning
+  * stress-clock: fix cppcheck style warning
+  * stress-sysfs: fix cppcheck style warning, initialize stack
+  * stress-ng: clarify precedence of & and ?, fixes cppcheck style warnings
+  * stress-handle: ensure scanf %s field is limited to avoid overruns
+  * Fix SunOS builds, add socket and nsl library link flags
+  * Use mfence instead of __sync_synchronize for gcc pre 4.2 on x86
+  * Makefile: explicitly specify C standard using --std=gnu99
+  * stress-vm: don't use binary constants, gcc may not support these
+
+ -- Colin King <colin.king@canonical.com>  Fri, 16 Sep 2016 16:15:48 +0100
+
+stress-ng (0.06.15-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-af-alg: account for number of ENOENT crypto bind failures
+  * stress-af-alg: don't report bind on ENOENT as a failure (LP: #1617788)
+    - retry is performed, failures are accounted for in debug verbose -v mode
+
+ -- Colin King <colin.king@canonical.com>  Sun, 28 Aug 2016 19:02:11 +0100
+
+stress-ng (0.06.14-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-mmapfork: add more feedback on segv faults (LP: #1614099)
+
+ -- Colin King <colin.king@canonical.com>  Wed, 17 Aug 2016 14:28:18 +0100
+
+stress-ng (0.06.13-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: add snapcraft into make dist
+  * ignite-cpu: ensure buffer is null terminated before calling strlen
+  * stress-affinity: only check CPU move if sched_getaffinity succeeds
+  * Add snapcraft packaging
+  * stress-seccomp: inject some random BPF op codes
+  * force indirect libc calls to enforce calls to libc wide str functions
+  * stress-str: fix incorrect order on args in call to stress funcs
+  * stress-str: force indirect libc calls to enforce calls to libc str functions
+  * ensure cache info is only printed once
+  * Manual: fix typo: build -> built
+
+ -- Colin King <colin.king@canonical.com>  Tue, 16 Aug 2016 11:38:12 +0100
+
+stress-ng (0.06.12-1) unstable; urgency=medium
+
+  * Makefile: bump version once more
+  * Update manual page date since we've touched the manual
+  * stress-seal: don't abort fatally if memfd_create is not available.
+  * fast-test-all: cater for non-fatal test exit status
+  * Add oom-pipe to fast-test-all exclusion list
+  * Manual: clarify that return code 3 could refer to missing system call
+  * stress-fcntl: handle EAGAIN lock requests more robustly
+  * stress-fcntl: don't check initial GETLK status
+  * stress-icache: don't fail if advice fails on EINVAL
+
+ -- Colin King <colin.king@canonical.com>  Fri, 15 Jul 2016 15:24:56 +0100
+
+stress-ng (0.06.11-1) unstable; urgency=medium
+
+  * Makefile; bump version
+  * fast-test-all: don't run seccomp, it may not pass on some kernels
+  * stress-fault: handle segfaults that occur on some BSD kernels
+  * stress-icache: only madvice if MADV_NOHUGEPAGE is defined
+  * stress-icache: don't assume that read/write/exec protection is allowed
+  * Update cache-mfence helper. It supports ARM now.
+
+ -- Colin King <colin.king@canonical.com>  Thu, 14 Jul 2016 10:11:12 +0100
+
+stress-ng (0.06.10-1) unstable; urgency=medium
+
+  * Makefile: bump version again
+  * stress-atomic + build: the autodetect smarts did not work, fix them
+    - need to check that the linker also provides all the atomic built-ins
+      too.
+
+ -- Colin King <colin.king@canonical.com>  Tue, 12 Jul 2016 17:29:46 +0100
+
+stress-ng (0.06.09-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-atomic: don't make tmp volatile, fixes clang warnings
+  * Add smarts to Makefile to detect if atomic GCC functions are supported
+    - fixes FTBFS issues on mips, mipsel, powerpc, m68k, powerpcspe, sh4
+
+ -- Colin King <colin.king@canonical.com>  Tue, 12 Jul 2016 10:52:18 +0100
+
+stress-ng (0.06.08-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Manual: update date
+  * stress-ptrace: EINTR is not a failure on waitpid
+  * stress-tlb-shootdown: remove case where < 2 CPUs abort the test
+  * Add GCC atomic ops stressor
+  * stress-copy-file-range: handle ENOSPC as non-fatal
+  * stress-icache: call __clear_cache() between code modifications.
+  * Enable icache stressor for arm
+  * Add renameat2 to syscalls
+  * Add preadv2/prwritev2 to syscalls
+  * stress-lockbus: use GCC builtin __atomic_add_fetch to test lock bus
+  * stress-epoll: void return on timer_settime
+  * Manual: update contributors, add Zhiyi Sun
+
+ -- Colin King <colin.king@canonical.com>  Tue, 12 Jul 2016 08:26:59 +0100
+
+stress-ng (0.06.07-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-msg: add in IPC_INFO, MSG_INFO, MSG_STAT msgctl calls
+  * stress-vecmath: add more ops to make vecmath more demanding
+  * stress-sync-file: sync on mode rather than on the sync_modes index
+  * stress-opcode: use __builtin___clear_cache to avoid clang warning
+  * stress-get: fix typo on syscall name
+  * replace mfence with __sync_synchronize builtin
+  * stress-bigheap: remove redundant call to stress_get_pagesize
+
+ -- Colin King <colin.king@canonical.com>  Fri, 24 Jun 2016 09:56:23 +0100
+
+stress-ng (0.06.06-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-shm-sysv: don't msync on GNU HURD, it is not implemented
+  * stress-shm: don't msync on GNU HURD, it is not implemented
+  * stress-ng: build in OPT_MEMFD_BYTES case if STRESS_MEMFD defined
+  * manual: fcntl: add in missing locking commands
+  * stress-socket: add --sock-type socket type option
+  * Add Linux open file description locks stressor
+  * Add POSIX advisory locking stressor
+  * stress-fcntl: add more locking fcntl commands
+  * man page: add --taskset example
+  * stress-memfd: add better termination exit points, don't fail on EXNIO
+  * stress-memfd: add a --memfd-bytes size specifier option
+  * perf + Makefile: Add some smarts to detect available perf enums
+  * stress-shm: msync the shm region
+  * stress-shm-sysv: msync the shm region
+  * stress-memfd: add hole punching to memory
+  * stress-mremap: add MAP_FIXED remappings
+  * stress-memfd: add random madvise to add some more page stress
+  * stress-memfd: add seeks to memfd stressor
+  * stress-xattr: rename name to attrname to stop shadowing on name
+  * Update README stress test count
+  * Add in missing seccomp from the --help info
+  * Add a fcntl SEAL command stressor
+  * README: update number of tests
+  * time_now: return -1.0 for failed time fetch
+  * stress-get: add getcpu system call
+  * stress-dup: only close fd's that are open
+
+ -- Colin King <colin.king@canonical.com>  Fri, 10 Jun 2016 12:36:33 +0100
+
+stress-ng (0.06.05-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-mmap: ensure we don't leak fd, cleanup on exit
+  * fast-test-all: don't run exec test
+  * stress-mremap: catch SEGV and OOM restarts
+  * stress-mmap: catch SEGV and OOM restarts
+  * fast-test-all: exclude pty
+  * Revert "stress-mremap: add random MAP_FIXED option to mremap"
+  * stress-zero: #if def around ptr declarion for non-Linux systems
+  * stress-zero: only perform /dev/zero mmapping on Linux
+  * stress-cacheflush: remove sys_cacheflush for non linux systems
+  * stress-shm-sysv: SHM_INFO and IPC_INFO are linux only
+  * stress-cache: only call cacheflush on Linux systems
+  * stress-filename: filename option should be from the .opt field
+  * stress-rtc: fix some overly pedantic warnings from cppcheck
+  * stress-shm: sync, expand and shrink shm region, extra stress
+  * stress-open: use different forms of open flag combinations
+  * stress-zero: mmap /dev/zero and check if the contents is zero
+  * stress-pipe: sanity check pipe size setting
+  * stress-dup: add dup2 on same fd exerciser
+  * stress-fcntl: add some more fcntl commands
+  * stress-seek: add SEEK_CUR, SEEK_END seek options
+  * stress-utime: exercise UTIME_NOW and UTIME_OMIT settings
+  * stress-userfaultfd: add poll to add some more kernel coverage
+  * Add stress_set_nonblock to set fd to non-blocking I/O
+  * stress-userfaultfd: add in zeropage handling
+  * stress-mremap: add random MAP_FIXED option to mremap
+  * stress-readahead: remove redundant if defined() checks on fadvise
+  * Add SIGHUP trapping and send SIGALRM to all processes on death
+  * stress-personality: only print number of personalities in instance 0
+  * syscalls: update pause information
+  * stress-cache: use cacheflush() on systems that provide this syscall
+  * syscalls: update ioctl entry
+  * perf: add "per" / marking for per second
+  * Add pty stressor
+  * Add semtimedop to syscalls, it is present in stress-sem-sysv.c
+  * stress-cap: add capset call for current stressor process
+  * stress-shm-sysv: add some additional exercising of shmctl commands
+  * stress-sem-sysv: exercise more of the semctl commands
+  * Add trivial chown stressor
+  * stress-dup: use dup3() on linux if it is available
+  * Makefile: vecmath: make the file touch silent
+  * stress-key: add request_key system call
+  * syscalls: update pipe2 entry, this is now being exercised by stress-pipe
+  * stress-mq: memset sigev to zero
+  * stress-madvise: only build in if STRESS_MADVISE defined
+  * Add madvise stressor
+  * syscalls: add mq_timedsend to mq
+  * stress-mq: use timed and non-timed versions of send/receive
+  * stress-mq: add mq_notify calls every 1024 iterations
+  * stress-link: lstat the link
+  * Widen metrics dump stressor name field to 13 chars
+
+ -- Colin King <colin.king@canonical.com>  Fri, 27 May 2016 11:37:09 +0100
+
+stress-ng (0.06.04-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: remove gcc coverage build flags
+    - these were accidentally added in the previous release and not
+      removed
+
+ -- Colin King <colin.king@canonical.com>  Wed, 18 May 2016 19:16:45 +0100
+
+stress-ng (0.06.03-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-cap: cap data needs _LINUX_CAPABILITY_U32S_3 elements in size
+  * stress-nice: add some randomness to the delay to unsync nicenesses
+  * stress-opcode: remove white spaces
+
+ -- Colin King <colin.king@canonical.com>  Wed, 18 May 2016 15:06:34 +0100
+
+stress-ng (0.06.02-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile + stress-vecmath: add more smarts to detect gcc build failures
+  * stress-af-alg: don't fatally fail on bind on AF_ALG
+  * stress-af-alg: fix up error messages
+  * Add stackmmap stressor
+  * stress-stack: ensure signal handling stack is aligned
+  * stress-context: ensure stack is aligned to 64 byte boundaries
+  * stress-opcode: disable signal count tracking
+  * stress-opcode: clean up code a little
+  * Add opcode stressor
+  * update syscalls.txt
+  * stress-ioprio: perform some io writes to exercise i/o priorities
+  * Add ioprio stressor
+
+ -- Colin King <colin.king@canonical.com>  Sun, 15 May 2016 17:36:11 +0100
+
+stress-ng (0.06.01-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-af-alg: avoid any unterminated strings (unlikely)
+  * debian/control: add libcap-dev to Build-Depends
+  * stress-hdd: should use SIZEOF_ARRAY instead of sizeof
+  * stress-full: don't close fd before trying a read
+  * stress-af-alg: ensure the rng read size is correct
+  * stress-af-alg: fix more -ve fd closes
+  * stress-af-alg: don't close fd that is -ve
+  * stress-tlb-shootdown: fix incorrect comparison on ENOMEM
+  * stress-af-alg: check for errors on setsockopt
+  * stress-full: try read test rather than skip if write fails
+  * stress-full: clear buffer before we write
+
+ -- Colin King <colin.king@canonical.com>  Fri, 6 May 2016 22:58:01 +0100
+
+stress-ng (0.06.00-1) unstable; urgency=medium
+
+  * Makefile: new major version and codename
+  * stress-msync: cast off_t to intmax_t to print with %jd format specifier
+  * debian/control: update Standards Version to 3.9.8
+  * manual: update date
+  * stress-msync: add in conditional STRESS_MSYNC build check
+  * stress-af-alg: add simple rng to the mix
+  * stress-af-alg: remove redundant type field info
+  * manual: rephrase the --seq description
+  * manual: clean up the SEE ALSO section
+  * Add TLB shootdown stressor
+  * stress-af-alg: remove (void)name
+  * Add /dev/full stressor
+  * stress-urandom: where possible also read data from /dev/random
+  * Manual: update af-alg skciper section.
+  * stress-hdd: work through all the --hdd-opts if --maximize is enabled
+  * stress-xattr: fix error messages, they were reporting wrong syscall
+  * stress-af-alg: use array size so we don't need NULL sentinels
+  * stress-af-alg: Add skcipher stessing
+  * stress-procfs: add /proc/tty, /proc/self, /proc/thread_self
+  * stress-key: Add some more keyctl calls
+  * Rename stressor names to match their command line name
+  * Add msync stressor
+  * Fix non-Linux build for set_cpu_affinity
+  * stress-rtc: also read /proc/driver/rtc
+  * Add RTC stressor
+  * stress-get: use prlimit only with glibc >= 2.13.0
+  * stress-procfs: add more /proc directory traversal
+  * stress-inotify: add ioctl FIONREAD to peek at available data on fd
+  * Add the CPU affinity option '--taskset'
+  * stress-cache: make pinned a linux only variable
+  * stress-cache: fix pinned message, swap cpu and instance around
+  * stress-cache: fix failure to build on GNU/HURD
+  * Update contributions authors in manual
+  * Ensure processes are kept to the CPU affinity set
+  * taskset -c 4-7 stress-ng --cache 4 --stream 4 --yield 4
+  * Update README with other OS build notes
+  * stress-spawn: make this a Linux only test
+  * Disable MLOCKED sections for now on SunOS, we get linker issues
+  * stress-ng: correct casts of void *
+  * stress-ng: include alloca.h for SunOS
+  * stress-ng: cater for systems that don't support RLIMIT_NPROC
+  * mincore: cater for SunOS mincore API difference
+  * stress-yield: correct casts of void *
+  * stress-yield: include alloca.h for SunOS
+  * stress-vm: correct casts of void *
+  * stress-stream: correct casts of void *
+  * stress-str: include strings.h for SunOS builds for index() prototype
+  * stress-stack: include alloca.h for SunOS
+  * stress-sigsuspend: correct casts of void * and uint64_t *
+  * stress-mmapmany: correct casts of void * and uint8_t *
+  * stress-mmap: correct casts of void * and uint8_t *
+  * Fix alignment mask to ensure stacks are 16 byte aligned (LP: #1573117)
+  * stress-mlock: correct casts of void * and uint8_t *
+  * stress-icache: cast addr to (void *) in mprotect calls
+  * mounts: SunOS requires *BSD style build arrangements
+  * stress-hdd: cast data to (void *) to silence warning
+  * stress-hdd: don't use futimes for Solaris UNIX
+  * Add logging to syslog of free memory info post-OOM
+  * Add system and memory syslog logging
+  * stress-brk: catch EAGAIN errors on sbrk/brk
+  * Remove debug log test message
+  * stress-socket-fd: only build stressor if STRESS_SOCK_FD defined
+  * Add logging of who and how stress-ng was invoked to syslog
+
+ -- Colin King <colin.king@canonical.com>  Wed, 4 May 2016 09:57:59 +0100
+
+stress-ng (0.05.25-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * debian/control: update standards version to 3.9.7
+  * Ensure all clone() calls are 16 byte aligned for aarch64 (LP: #1573117)
+
+ -- Colin King <colin.king@canonical.com>  Fri, 22 Apr 2016 09:50:44 +0100
+
+stress-ng (0.05.24-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-mmap: handle SIGBUS signals (LP: #1569468)
+  * stress-mmapmany: sanity check sysconf return
+  * stress-mmapmany: detect SEGV deaths
+  * stress-mlock: detect SEGV deaths
+  * stress-brk: detect SEGV deaths
+  * stress-bigheap: detect SEGV deaths
+  * stress-memfd: detect SEGV deaths
+  * stress-mmapmany: allocate mappings on heap rather than stack
+  * stress-mlock: allocate mappings on heap rather than stack
+  * stress-cpu: move sieve buffer to static to reduce stack size
+  * stress-sem*: differentiate between which semaphore init that failed
+  * stress-remap-file-pages: abort if remap fails
+  * stress-fiemap: remove \n from pr_fail_err messages
+
+ -- Colin King <colin.king@canonical.com>  Thu, 14 Apr 2016 11:00:11 +0100
+
+stress-ng (0.05.23-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-aio: fix segfault on --maximumize option (LP: #1568335)
+  * stress-chmod: just instance 0 should create the file (LP: #1568333)
+
+ -- Colin King <colin.king@canonical.com>  Sat, 9 Apr 2016 17:48:23 +0100
+
+stress-ng (0.05.22-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-af-alg: retry open if we get EAFNOSUPPORT (LP: #1564786)
+
+ -- Colin King <colin.king@canonical.com>  Fri, 1 Apr 2016 09:40:56 +0100
+
+stress-ng (0.05.21-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Add test-cap.c to Makefile dist rule
+  * debian: tests: don't run remap stressor
+  * stress-ng: add klog (syslog) stressor
+  * syscalls: add remap_file_pages
+  * Add page remapping stressor
+  * stress-pthread: Add get_robust_list call
+  * stress-sysinfo: exercise fstatfs()
+  * Move wcs options to correct position in manual
+  * Add the sync-file stressor
+  * Add fp-error stressor
+  * syscalls.txt: update some missing syscalls and some re-ordering
+  * Add sys/capability.h and capget build time checks
+  * stress-get: add prlimit
+  * Update syscalls.txt with capget stressor
+  * Add capabilities stressor
+
+ -- Colin King <colin.king@canonical.com>  Sun, 20 Mar 2016 11:39:31 +0000
+
+stress-ng (0.05.20-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-getdent: fix build warnings on systems with no getdents syscalls
+  * Manual: update date
+  * Debian/changelog: fix spelling mistake
+  * stress-udp: fix two warnings on uninitialised addr
+  * stress-socket-fd: fix two scan-build warnings
+  * stress-getdent: init ret to -ENOSYS, fix scan-build warning
+  * Use the generic signal handler helpers
+  * helper: add generic signal handling/restoring helper functions
+  * stress-oom-pipe: use stress_get_file_limit
+  * stress-open: use stress_get_file_limit
+  * stress-dup: use stress_get_file_limit
+  * stress-socket-fd: use stress_get_file_limit
+  * helper: add stress_get_file_limit to get max open files allowed
+  * Add sockfd stressor
+  * Add getdent stressor
+  * stress-filename: use strncpy rather than strcpy
+  * stress-qsort: use calloc
+  * stress-cpu: zeta method should be counting in integers
+  * stress-mergesort: use calloc
+  * stress-heapsort: use calloc
+  * stress-bsearch: use calloc
+
+ -- Colin King <colin.king@canonical.com>  Sat, 12 Mar 2016 17:58:42 +0000
+
+stress-ng (0.05.19-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-switch: don't initialize buf_size twice
+  * stress-ng: don't stress-sleep options unless STRESS_SLEEP defined
+  * stress-shm-sysv: comparing j < i - 1 is incorrect when i = 0
+  * stress-shm-sysv: parent should close read end of pipe
+  * stress-context: make stacks larger, avoid segfault on kFreeBSD
+  * stress-oom-pipe: handle condition where pipe size can't be set
+  * stress-pipe: use O_DIRECT when possible
+  * stress-switch: use O_DIRECT with 1 byte buffer is possible
+  * stress-oom-pipe: ensure sz is set before we check it against prev_sz
+  * Add stress-oom-pipe pipe buffer stressor
+  * helper: fix comment on system_read()
+  * stress-fallocate: add in default mode 0
+  * stress-iosync: fix build warning when using old glibc:
+  * stress-fstat: add blacklist of paths not to open/fstat/close
+  * correctly spell stress_adjust_pthread_max
+  * stress-str: make some statics into static const
+  * stress-socket: make socket_opts static const
+  * stress-maxtrix: make some statics static const
+  * stress-vm: make some statics static const
+  * stress-wcstr: make variables static const
+  * stress-get: make priorities static const
+  * stress-filename: make filename_opts static const
+  * stress-dentry: make dentry_removals static const
+  * stress-cpu: make some variables static const
+  * stress-clone: make flags and unshare flags static const
+  * stress-chmod: make modes static const
+  * perf: make perf_tp_info static const
+  * cache: make struct generic_map const
+  * helper: make stress_temp_path static const
+  * stress-udp-flood: make data static const
+  * stress-spawn: make exec strings static
+  * Only define OPT_PTHREAD* macros if STRESS_PHREAD is defined
+  * Minor #define changes, no functional change
+  * stress-cpu: remove redundant initialisation of last_e
+  * stress-cpu: don't build _Decimal stressors with clang
+  * stress-shm-sysv: set entire shm_ids array to -1
+  * stress-fork: make child exit immediately and stash pid only in parent
+  * stress-xattr: free buffer on error exit path
+  * stress-timerfd: fix timer thresholding check
+  * Add sleep stressor
+  * stress-clock: add some comments and make source 80 column friendly
+  * bigheap: reorder some variables on the stack for better packing
+  * Add whitespace in return statement
+  * thermal-zone: minor clean up
+  * net: make loop iterator size_t
+  * cache: minor code tweaks, no functional changes
+  * cache: rework get_contents error return paths
+  * cache: reformat function declarations to match the stress-ng code style
+  * clean up and rename macro mk_path to MK_PATH
+  * Ensure we do not under run string buffer
+  * Add apparmor_parser executable check
+  * time: make source 80 column friendly
+  * thermal-zone: make source 80 column friendly
+  * sched: make source 80 column friendly
+  * perf: make source 80 column friendly
+  * mlock: make source 80 column friendly
+  * limit.c: remove redundant #includes
+  * io-priority: make source 80 column friendly
+  * ignite-cpu: make source 80 column friendly
+  * Include stress-ng.h first for __kernel_long_t and __kernel_ulong_t
+
+ -- Colin King <colin.king@canonical.com>  Thu, 3 Mar 2016 17:20:01 +0000
+
+stress-ng (0.05.18-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-eventfd: fix incorrect return check on eventfd (LP: #1547450)
+  * stress-mknod: fix == comparison on errno (LP: #1547446)
+  * stress-tee: catch EINTR in splice() calls (LP: #1547434)
+
+ -- Colin King <colin.king@canonical.com>  Fri, 19 Feb 2016 12:40:24 +0000
+
+stress-ng (0.05.17-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * stress-aio: don't cancel the signal handler before exiting (LP: #1547108)
+  * stress-lockf: don't return failure if we get a timeout (LP: #154107)
+  * stress-aio: don't return failure if we get a timeout (LP: #1547090)
+  * Check for ENOMEM ENOSPC errors during init (LP: #1547062)
+  * make stress_temp_dir_mk and stress_temp_dir_rm return -errno on failure
+  * stress-dentry: fix file striding on clean-up (LP: #1547004)
+  * Add stress_get_prime64 to stress-ng header
+  * Add stress_get_prime64 to find a prime for filename striding
+  * typedef possibly missing __kernel_long_t and __kernel_ulong_t
+  * Add <linux/posix_types.h> for linux builds
+  * stress-aio-linux: fix clang scan-build warning
+  * Makefile: only do build time config detection when building target
+
+ -- Colin King <colin.king@canonical.com>  Thu, 18 Feb 2016 17:52:11 +0000
+
+stress-ng (0.05.16-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Makefile: add test-libaio.c to dist rule
+  * stress-seccomp: EINTR on waitpid is not a failure, so ignore it
+  * stress-numa: aborted test should not be a failure, nothing got tested
+  * stress-quota: check for EPERM, abort if we don't have permission
+  * stress-kcmp: check for EPERM, abort if we don't have permission
+  * debian/control: add libaio-dev dependency
+  * stress-aio: use aiolib instead of direct system calls
+  * Catch faults in child stressor and flag them as a fatal failure
+  * stress-socket: only build in sendmmsg test for glibc 2.14 or higher
+  * stress-iosync: build in syncfs call for glibc 2.14 or higher
+  * Add detection for <linux/seccomp.h>
+  * stress-handle: only build in if we have glibc 2.14 or higher
+  * ignite-cpu: don't print failure message as inf, make it dbg
+  * stress-malloc: calloc'd size is too big, fix the size (LP: #1544575)
+  * mincore: page align address of buffer before passing it to mincore
+
+ -- Colin King <colin.king@canonical.com>  Fri, 12 Feb 2016 19:02:59 +0000
+
+stress-ng (0.05.15-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * fast-test-all: add pass/fail summary at end
+  * fast-test-all: fix typo, socket-pair should be sockpair
+  * stress-handle: specify width of integer in sscanf
+  * Manual: expand the error exit code notes
+  * stress-qsort: cast data to (uint8_t *) to stop static analysis warnings
+  * stress-hdd: close file on a fstat failure
+  * stress-futex: add backoff delay if futex is too much in contention
+  * stress-sendfile: ignore EINTR on sendfile calls
+  * stress-readahead: handle -ENOSPC as a non-failure condition
+  * stress-vm-rw: re-organise the code into parent/child helpers
+  * stress-userfaultfd: set stack size to be STACK_SIZE
+  * stress-hdd: handle -ENOSPC as a non-failure condition
+  * adt: remove socket-pair from tests
+  * cache helper: output cache allocation size
+  * stress-cpu-online: only report root requirement on instance 0
+  * stress-cpu-online: Don't report a failure if not run as root
+  * Add L before cache level to make the debug less abstract
+  * stress-denty: ENOSPC should not be a fatal error that stops the test
+  * Fix -x option, compare munged strings to treat '_' like '-'
+  * Ensure pathological class is disabled if we don't enable --pathological
+  * stress-zlib: fix comparison which should not be an assignment
+  * helper: fix double free on error exit
+
+ -- Colin King <colin.king@canonical.com>  Wed, 10 Feb 2016 10:35:16 +0000
+
+stress-ng (0.05.14-1) unstable; urgency=medium
+
+  * Makefile: bump version
+  * Fix make dist - typo in test-libpthread.c
+  * stress-fiemap: initialise counter at start of loop
+  * stress-fiemap: ensure counter is being updated
+  * adt: exclude bind mount from list of stressors
+  * Don't emit warning on --pathological if number of stressors is zero
+  * ignite-cpu: add null entry at end of list, don't scan by array size
+  * Only include <sys/mount.h> for linux for the bind mount stressor
+  * stress-bind-mount: build stressor if STRESS_BIND_MOUNT defined
+  * stress-bind-mount: stop cppcheck whining about uninitialised pid
+  * stress-numa: don't fatally fail on -EIO with MPOL_MF_STRICT (LP: #1542741)
+  * Enabled IGNITE_CPU with the --aggressive option
+  * Add bind-mount stressor (LP: #1542010)
+  * Add --ignite-cpu option to maximize CPU frequency
+  * Make float decimal auto detect set -DHAVE_FLOAT_DECIMAL
+  * Minor re-org of Makefile, and add more files to dist rule
+  * Update README - increase number of stressors
+  * adt tests: remove membarrier, it fails on older kernels in Debian
+  * Add some more comments
+  * stress-affinity: handle EINVAL when CPU(s) are offline
+  * Set number of instances to on-line CPUs if N is -ve (LP: #1513546)
+  * Remove opt_long, replace with get_int32 or get_uint64
+  * Add libpthread build time checks
+  * Add librt build time checks
+  * Remove commented out old link line
+  * Add libcrypt check
+  * Makefile: remove test-libz correctly
+  * stress-cpu: make source 80 column friendly
+  * Add FORCE_DO_NOTHING macro do force compiler to stop opimizing out loops
+  * Add zlib stressor
+  * stress-stream: cater for systems without L3 cache
+  * stress-stream: only emit cache size info on instance 0
+  * Add libbsd-dev to README
+
+ -- Colin King <colin.king@canonical.com>  Mon, 8 Feb 2016 18:29:11 +0000
+
+stress-ng (0.05.13-1) unstable; urgency=medium
+
+  * Makefile bump version
+  * Makefile: add test-libbsd.c to dist rule
+  * adt: Bar a few more tests that can be problematic on different arches
+  * stress-fifo: don't return and error status if we have to abort early
+  * Exclude tests that may fail because system calls not fully implemented
+  * Build stress-mergesort if STRESS_MERGESORT is defined
+  * Built stress-heapsort if STRESS_HEAPSORT is defined
+  * Make *put globals volatile to force gcc to compute values
+  * Add BSD mergesort stressor
+  * Add BSD heapsort stressor
+  * madvise: add MADV_FREE
+  * stress-vm-rw: don't close already closed pipe ends
+  * stress-vm: just one top level iteration in rowhammer method
+  * Use MAP_SHARED where appropriate
+  * stress-qsort: fix typo in comment SIGARLM -> SIGALRM
+  * Makefile: call make using $(MAKE)
+  * stress-apparmor: reduce scope of ret
+  * stress-shm: reduce the scope of variable n
+  * stress-shm-sysc: reduce scope of variable n
+
+ -- Colin King <colin.king@canonical.com>  Thu, 4 Feb 2016 16:02:00 +0000
+
 stress-ng (0.05.12-1) unstable; urgency=medium
 
   * Makefile: bump version
@@ -896,7 +2712,7 @@ stress-ng (0.03.19-1) unstable; urgency=medium
 
   * Makefile: bump version
   * stress-sem: fix spelling mistake in comment: destory -> destroy
-  * Manual: fix spelling mistake: successfull -> sucessful
+  * Manual: fix spelling mistake: successfull -> successful
   * Manual: fix typo: summaries -> summarise
   * Manual: vecmath: Replace x with \(mu multiply sign for correct formatting
   * Manual: Fix udp port description, add the default base port being used.
@@ -1106,7 +2922,7 @@ stress-ng (0.03.13-1) unstable; urgency=medium
   * Add check for BSD invalid chmod mode bits error
   * Fix printing of stressor names, some names too long and _ -> - conversion
   * stress-cache: put { } braces around cflush and mfence
-  * stress-mq: intialise mq to -1 to avoid gcc warning (false positive)
+  * stress-mq: initialise mq to -1 to avoid gcc warning (false positive)
   * Add full read checks in stress-hdd read stressor loops
   * stress-hdd: remove debug cruft
   * Forgot to escape some - hyphens in manual
