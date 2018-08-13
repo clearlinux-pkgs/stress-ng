@@ -4,7 +4,7 @@
 #
 Name     : stress-ng
 Version  : 0.09.37
-Release  : 21
+Release  : 22
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.09.37.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.09.37.tar.gz
 Summary  : No detailed summary available
