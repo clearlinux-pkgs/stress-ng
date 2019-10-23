@@ -4,7 +4,7 @@
 #
 Name     : stress-ng
 Version  : 0.10.08
-Release  : 52
+Release  : 53
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.10.08/stress-ng-0.10.08.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.10.08/stress-ng-0.10.08.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
@@ -14,6 +14,7 @@ Requires: stress-ng-bin = %{version}-%{release}
 Requires: stress-ng-data = %{version}-%{release}
 Requires: stress-ng-license = %{version}-%{release}
 Requires: stress-ng-man = %{version}-%{release}
+Requires: intel-ipsec-mb
 BuildRequires : keyutils-dev
 BuildRequires : util-linux
 
@@ -65,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571677020
+export SOURCE_DATE_EPOCH=1571842114
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -79,7 +80,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1571677020
+export SOURCE_DATE_EPOCH=1571842114
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
 cp %{_builddir}/stress-ng-0.10.08/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c
