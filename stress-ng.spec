@@ -4,7 +4,7 @@
 #
 Name     : stress-ng
 Version  : 0.11.00
-Release  : 66
+Release  : 67
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.11.00/stress-ng-0.11.00.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.11.00/stress-ng-0.11.00.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
@@ -68,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581529489
+export SOURCE_DATE_EPOCH=1581529843
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -82,7 +82,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1581529489
+export SOURCE_DATE_EPOCH=1581529843
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
 cp %{_builddir}/stress-ng-0.11.00/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c
