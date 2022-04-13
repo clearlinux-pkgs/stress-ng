@@ -1,5 +1,5 @@
 PKG_NAME := stress-ng
-URL = https://github.com/ColinIanKing/stress-ng/archive/V0.13.12/stress-ng-0.13.12.tar.gz
+URL = https://github.com/ColinIanKing/stress-ng/archive/V0.14.00/stress-ng-0.14.00.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
