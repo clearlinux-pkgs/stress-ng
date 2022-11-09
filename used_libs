@@ -2,4 +2,5 @@ ld-linux-x86-64.so.2
 libIPSec_MB.so.1
 libc.so.6
 libcrypt.so.1
+libjpeg.so.62
 libm.so.6

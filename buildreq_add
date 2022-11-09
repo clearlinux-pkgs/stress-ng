@@ -2,3 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 keyutils-dev
 intel-ipsec-mb-dev
+libcap-dev
+libjpeg-turbo-dev
