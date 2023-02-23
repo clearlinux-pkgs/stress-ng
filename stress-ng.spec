@@ -4,7 +4,7 @@
 #
 Name     : stress-ng
 Version  : 0.15.04
-Release  : 131
+Release  : 132
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.04/stress-ng-0.15.04.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.04/stress-ng-0.15.04.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
@@ -15,10 +15,17 @@ Requires: stress-ng-data = %{version}-%{release}
 Requires: stress-ng-license = %{version}-%{release}
 Requires: stress-ng-man = %{version}-%{release}
 Requires: intel-ipsec-mb
+BuildRequires : attr-dev
 BuildRequires : intel-ipsec-mb-dev
 BuildRequires : keyutils-dev
+BuildRequires : kmod-dev
+BuildRequires : libaio-dev
+BuildRequires : libbsd-dev
 BuildRequires : libcap-dev
+BuildRequires : libgcrypt-dev
 BuildRequires : libjpeg-turbo-dev
+BuildRequires : mesa-dev
+BuildRequires : zlib-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -72,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676479380
+export SOURCE_DATE_EPOCH=1677161076
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O3 -g -fopt-info-vec "
 unset LDFLAGS
@@ -87,7 +94,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1676479380
+export SOURCE_DATE_EPOCH=1677161076
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
 cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
