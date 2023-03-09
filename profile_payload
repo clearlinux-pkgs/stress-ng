@@ -1,0 +1,3 @@
+./stress-ng -t 3 --seq 1 --atomic 1 --cache 1 --cacheline 1 --context 1 --dekker 1 --flushcache 1 --fp 1 --funccall 1 --funcret 1 --futex 1 --goto 1 --hash 1 --icache 1 --l1cache 1 --list 1 --matrix 1 --matrix-3d 1 --memcpy 1 --memrate 1 --peterson 1 --prefetch 1 --qsort 1 --randlist 1 --regs 1 --rotate 1 --skiplist 1 --sparsematrix 1 --stream 1 --tree 1 --vecfp 1 --vecmath 1 --vecshuf 1 --vecwide 1 --metrics -v
+
+
