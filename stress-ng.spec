@@ -4,7 +4,7 @@
 #
 Name     : stress-ng
 Version  : 0.15.06
-Release  : 135
+Release  : 136
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.06/stress-ng-0.15.06.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.06/stress-ng-0.15.06.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
@@ -26,6 +26,8 @@ BuildRequires : libgcrypt-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : mesa-dev
 BuildRequires : zlib-dev
+Patch1: 0001-core-helper-fix-stress_rndbuf-to-fill-entire-buff.patch
+Patch2: 0002-stress-af-alg-remove-check-for-HAVE_LIB_IPSEC_MB.patch
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -73,6 +75,8 @@ man components for the stress-ng package.
 %prep
 %setup -q -n stress-ng-0.15.06
 cd %{_builddir}/stress-ng-0.15.06
+%patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
