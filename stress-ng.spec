@@ -4,10 +4,10 @@
 # Using build pattern: make
 #
 Name     : stress-ng
-Version  : 0.15.07
-Release  : 138
-URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.07/stress-ng-0.15.07.tar.gz
-Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.07/stress-ng-0.15.07.tar.gz
+Version  : 0.15.08
+Release  : 139
+URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.07/stress-ng-0.15.08.tar.gz
+Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.07/stress-ng-0.15.08.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
 Group    : Development/Tools
 License  : GPL-2.0
@@ -80,25 +80,25 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681402791
+export SOURCE_DATE_EPOCH=1684682525
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O3 -g -fopt-info-vec "
 unset LDFLAGS
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1681402791
+export SOURCE_DATE_EPOCH=1684682525
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
-cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+cp %{_builddir}/stress-ng-0.15.07/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
 %make_install
 
 %files
