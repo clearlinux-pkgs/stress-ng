@@ -4,10 +4,10 @@
 # Using build pattern: make
 #
 Name     : stress-ng
-Version  : 0.15.08
-Release  : 139
-URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.07/stress-ng-0.15.08.tar.gz
-Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.07/stress-ng-0.15.08.tar.gz
+Version  : 0.15.09
+Release  : 140
+URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.09/stress-ng-0.15.09.tar.gz
+Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.09/stress-ng-0.15.09.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
 Group    : Development/Tools
 License  : GPL-2.0
@@ -16,7 +16,9 @@ Requires: stress-ng-data = %{version}-%{release}
 Requires: stress-ng-license = %{version}-%{release}
 Requires: stress-ng-man = %{version}-%{release}
 Requires: intel-ipsec-mb
+BuildRequires : Judy-dev
 BuildRequires : attr-dev
+BuildRequires : eigen-dev
 BuildRequires : intel-ipsec-mb-dev
 BuildRequires : keyutils-dev
 BuildRequires : kmod-dev
@@ -72,15 +74,15 @@ man components for the stress-ng package.
 
 
 %prep
-%setup -q -n stress-ng-0.15.07
-cd %{_builddir}/stress-ng-0.15.07
+%setup -q -n stress-ng-0.15.09
+cd %{_builddir}/stress-ng-0.15.09
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684682525
+export SOURCE_DATE_EPOCH=1686818831
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O3 -g -fopt-info-vec "
 unset LDFLAGS
@@ -95,10 +97,10 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1684682525
+export SOURCE_DATE_EPOCH=1686818831
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
-cp %{_builddir}/stress-ng-0.15.07/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
 %make_install
 
 %files

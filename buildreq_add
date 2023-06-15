@@ -6,9 +6,10 @@ libcap-dev
 libjpeg-turbo-dev
 libbsd-dev
 libgcrypt-dev
-#Judy-dev
 zlib-dev
 kmod-dev
 libaio-dev
 mesa-dev
 attr-dev
+eigen-dev
+Judy-dev
