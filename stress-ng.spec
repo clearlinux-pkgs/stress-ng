@@ -4,10 +4,10 @@
 # Using build pattern: make
 #
 Name     : stress-ng
-Version  : 0.15.10
-Release  : 141
-URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.15.10/stress-ng-0.15.10.tar.gz
-Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.15.10/stress-ng-0.15.10.tar.gz
+Version  : 0.16.00
+Release  : 142
+URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.16.00/stress-ng-0.16.00.tar.gz
+Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.16.00/stress-ng-0.16.00.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
 Group    : Development/Tools
 License  : GPL-2.0
@@ -74,15 +74,15 @@ man components for the stress-ng package.
 
 
 %prep
-%setup -q -n stress-ng-0.15.10
-cd %{_builddir}/stress-ng-0.15.10
+%setup -q -n stress-ng-0.16.00
+cd %{_builddir}/stress-ng-0.16.00
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686832652
+export SOURCE_DATE_EPOCH=1688724773
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O3 -g -fopt-info-vec "
 unset LDFLAGS
@@ -97,7 +97,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1686832652
+export SOURCE_DATE_EPOCH=1688724773
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
 cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
