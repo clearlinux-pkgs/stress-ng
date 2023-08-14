@@ -3,8 +3,6 @@ libEGL.so.1
 libGLESv2.so.2
 libIPSec_MB.so.1
 libJudy.so.1
-libaio.so.1
-libatomic.so.1
 libbsd.so.0
 libc.so.6
 libcrypt.so.1

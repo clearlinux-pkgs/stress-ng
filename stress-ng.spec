@@ -4,10 +4,10 @@
 # Using build pattern: make
 #
 Name     : stress-ng
-Version  : 0.16.03
-Release  : 145
-URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.16.03/stress-ng-0.16.03.tar.gz
-Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.16.03/stress-ng-0.16.03.tar.gz
+Version  : 0.16.04
+Release  : 146
+URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.16.04/stress-ng-0.16.04.tar.gz
+Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.16.04/stress-ng-0.16.04.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
 Group    : Development/Tools
 License  : GPL-2.0
@@ -74,15 +74,15 @@ man components for the stress-ng package.
 
 
 %prep
-%setup -q -n stress-ng-0.16.03
-cd %{_builddir}/stress-ng-0.16.03
+%setup -q -n stress-ng-0.16.04
+cd %{_builddir}/stress-ng-0.16.04
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1691718152
+export SOURCE_DATE_EPOCH=1691999512
 export GCC_IGNORE_WERROR=1
 export CFLAGS="-O3 -g -fopt-info-vec "
 unset LDFLAGS
@@ -97,10 +97,11 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1691718152
+export SOURCE_DATE_EPOCH=1691999512
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
 cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+cp %{_builddir}/stress-ng-%{version}/debian/copyright %{buildroot}/usr/share/package-licenses/stress-ng/cbd30fed61b741e7daec7d10d71d4fe673285a8a || :
 %make_install
 
 %files
@@ -132,6 +133,7 @@ cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-lice
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/stress-ng/cbd30fed61b741e7daec7d10d71d4fe673285a8a
 
 %files man
 %defattr(0644,root,root,0755)
