@@ -1,6 +1,7 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
 keyutils-dev
+gmp-dev
 intel-ipsec-mb-dev
 libcap-dev
 libjpeg-turbo-dev
@@ -10,6 +11,7 @@ zlib-dev
 kmod-dev
 libaio-dev
 mesa-dev
+mpfr-dev
 attr-dev
 eigen-dev
 Judy-dev
