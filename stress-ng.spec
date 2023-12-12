@@ -39,6 +39,8 @@ BuildRequires : zlib-dev
 %define __strip /bin/true
 %define debug_package %{nil}
 
+Patch0001: 0001-stress-vma-fix-non-termination-of-vma-pthreads-and-c.patch
+
 %description
 # stress-ng (stress next generation)
 <a href="https://repology.org/project/stress-ng/versions">
@@ -82,6 +84,8 @@ man components for the stress-ng package.
 %prep
 %setup -q -n stress-ng-0.17.03
 cd %{_builddir}/stress-ng-0.17.03
+
+%patch 0001 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
