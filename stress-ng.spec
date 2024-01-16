@@ -7,7 +7,7 @@
 #
 Name     : stress-ng
 Version  : 0.17.04
-Release  : 157
+Release  : 158
 URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.17.04/stress-ng-0.17.04.tar.gz
 Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.17.04/stress-ng-0.17.04.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
