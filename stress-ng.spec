@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : stress-ng
-Version  : 0.18.03
-Release  : 170
-URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.18.03/stress-ng-0.18.03.tar.gz
-Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.18.03/stress-ng-0.18.03.tar.gz
+Version  : 0.18.04
+Release  : 171
+URL      : https://github.com/ColinIanKing/stress-ng/archive/V0.18.04/stress-ng-0.18.04.tar.gz
+Source0  : https://github.com/ColinIanKing/stress-ng/archive/V0.18.04/stress-ng-0.18.04.tar.gz
 Summary  : stress-ng will stress test a computer system in various selectable ways
 Group    : Development/Tools
 License  : GPL-2.0
@@ -78,10 +78,10 @@ man components for the stress-ng package.
 
 
 %prep
-%setup -q -n stress-ng-0.18.03
-cd %{_builddir}/stress-ng-0.18.03
+%setup -q -n stress-ng-0.18.04
+cd %{_builddir}/stress-ng-0.18.04
 pushd ..
-cp -a stress-ng-0.18.03 buildavx2
+cp -a stress-ng-0.18.04 buildavx2
 popd
 
 %build
@@ -89,7 +89,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1725209809
+export SOURCE_DATE_EPOCH=1725895986
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="-O3 -g -fopt-info-vec "
 export AR=gcc-ar
@@ -134,7 +134,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1725209809
+export SOURCE_DATE_EPOCH=1725895986
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/stress-ng
 cp %{_builddir}/stress-ng-%{version}/COPYING %{buildroot}/usr/share/package-licenses/stress-ng/4cc77b90af91e615a64ae04893fdffa7939db84c || :
