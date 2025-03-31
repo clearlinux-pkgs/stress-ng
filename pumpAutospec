@@ -1,0 +1,1 @@
+Compiler:  number of counters in profile data for function ‘stress_mwc_reseed’ does not match its profile data (counter ‘arcs’, expected 19 and have 20) [-Werror=coverage-mismatch]
