@@ -1,0 +1,11 @@
+--- stress-ng-0.18.10/Makefile~	2025-02-02 16:57:00.000000000 +0000
++++ stress-ng-0.18.10/Makefile	2025-02-06 16:22:38.399021551 +0000
+@@ -93,7 +93,7 @@
+ #
+ # Check if compiler supports flag set in $(flag)
+ #
+-cc_supports_flag = $(shell $(CC) -Werror $(flag) -E -xc /dev/null > /dev/null 2>&1 && echo $(flag))
++cc_supports_flag = $(shell $(CC) $(flag) -E -xc /dev/null > /dev/null 2>&1 && echo $(flag))
+ 
+ #
+ # Pedantic flags
